@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <canvas id="myCanvas" width="300" height="200" style="border:1px solid #d3d3d3;">
+        Your browser does not support the HTML5 canvas tag.</canvas>
+
+    <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+
+        // Create a rectangle
+        ctx.rect(20, 20, 30, 30);
+        ctx.fillStyle = "grey";
+        ctx.fill();
+
+        // Create the text inside the rectangle
+        ctx.font = 25 + "px Arial";
+        ctx.textAlign = "left";
+        ctx.fillStyle = "gold";
+        ctx.fillText("3", 27.5, 43.5);
+        
+    </script>
+
+</body>
+
+</html>
