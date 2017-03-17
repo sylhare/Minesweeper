@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h3>Example of addEventListener() method</h3>
+
+    <p id="demo"> Click me. </p>
+    <p id="test"> Right click me. </p>
+    <p id="other"> Move </p>
+    <div oncontextmenu="javascript:return false;"> Can't see right click menu here </div>
+
+
+    <script>
+        document.getElementById("demo").addEventListener('click', eventHandler);
+
+        function eventHandler() {
+            document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
+            return false;
+        }
+
+        document.getElementById("test").addEventListener('contextmenu', function(evt) {
+            evt.preventDefault(); //to hide the contextMenu
+            document.getElementById("test").innerHTML = "YOU RIGHT CLICKED ME!";
+            return false;
+        });
+
+        document.getElementById("other").addEventListener('mousemove', function(evt) {
+            document.getElementById("other").innerHTML = "YOU MOVED";
+        });
+
+
+        document.getElementById("other").addEventListener("mouseover", function() {
+            document.getElementById("other").innerHTML = ">>>> MOUSE OVER HERE! <<<<"
+            sleep(200);
+        });
+
+        document.getElementById("other").addEventListener("mouseout", function() {
+            document.getElementById("other").innerHTML = "AND IT'S GONE !"
+        });
+
+    </script>
+
+</body>
+
+</html>
