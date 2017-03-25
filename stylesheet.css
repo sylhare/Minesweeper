@@ -1,19 +1,18 @@
 * {
     padding: 0;
     margin: 0;
- }
+}
 
 h1 {
     font-family: "Calibri";
     text-align: center;
-    color: white;
-    background-color: grey;
+    color: #FAFCFC;
+    background-color: #505A5C;
 }
 
 canvas {
     font-family: "Calibri";
-    background: #E0E0E0;
     display: block;
     margin: 0 auto;
-    border:5px solid grey;
+    border: 5px solid grey;
 }
