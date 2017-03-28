@@ -18,6 +18,7 @@ Here are some stuff that I might add, now that I have a first version working:
 - A Selector to choose the board size
 - A button to start the game (and the Counter)
 - A winning feature (with a reward for betting the game)
+- Have the number of mine to find
 - Some clean up
 
 
@@ -25,4 +26,4 @@ Here are some stuff that I might add, now that I have a first version working:
 
 I used javascript without any framework.</br> 
 The minesweeper is rendered in a canvas object (I thought of an other option, like using a table in HTML and react.js to update it, maybe for later).</br>
-I've built the project under the influence of how they did using p5.js but without it. So there's a sketch.js with the control and set-up, then there's Board.js for the minesweeper board model that is rendered through a lot of zones in Zones.js which also have some logic for the display.
+The project is build with `sketch.js` that does the control and set-up, then there's `Board.js` for the minesweeper board model that is rendered through a lot of zones in `Zone.js` which also have some logic for the display.
