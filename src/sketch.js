@@ -4,8 +4,9 @@ var ctx = canvas.getContext("2d");
 var board;
 
 function setup() {
-    board = new Board(8, (canvas.width - 9 * 2)/(8));
-    
+    board = new Board(64);
+    //board = new Board(canvas);
+
     canvas.addEventListener('mousemove', function (evt) {
         var pos = getMousePos(canvas, evt);
         board.update(pos.x, pos.y, evt.type);
@@ -13,14 +14,14 @@ function setup() {
     canvas.addEventListener('click', function (evt) {
         var pos = getMousePos(canvas, evt);
         board.update(pos.x, pos.y, evt.type);
-        
+
     });
     canvas.addEventListener('contextmenu', function (evt) {
         var pos = getMousePos(canvas, evt);
         evt.preventDefault();
         board.update(pos.x, pos.y, evt.type);
     });
-    
+
     setInterval(draw, 1000);
 
 }
@@ -33,8 +34,8 @@ function createCanvas(body, id, width, height) {
     var canvas = document.createElement('canvas');
 
     canvas.id = id || "board";
-    canvas.width = width || 280;
-    canvas.height = height || 280;
+    canvas.width = width || 258;
+    canvas.height = height || 258;
     canvas.oncontextmenu = "javascript:return false;";
 
     body.appendChild(canvas);
@@ -55,4 +56,3 @@ window.onload = function () {
     setup();
     draw();
 }
-
