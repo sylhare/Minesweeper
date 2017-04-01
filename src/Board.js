@@ -1,5 +1,11 @@
-function Board(width, zoneSize, padding, boardSize, mineNumber) {
+var pad = 2; //Value for the padding
+var size = 30; //Value for the size of a zone (a square)
+
+function Board(map, mineNumber) {
     /*
+        Board accept two variables, map which defines how the board is created,
+        If you feed Board with a canvas, it will fill it with cases, 
+        If you feed Board with a number, it will create a square of zones starting top left
         A board is composed of multiple independant square zones
         example:
         
@@ -18,20 +24,48 @@ function Board(width, zoneSize, padding, boardSize, mineNumber) {
                         South
                         
         64 - boardSize
-        8  - width
-
+        8  - column
+        
+         -- zoneSize 
+         __           __   __
+        |  | Padding |  | |  | 
+         --           --   --
     
     */
-
-    this.width = width || 8;
-    this.zoneSize = zoneSize || 30;
-    this.padding = padding || 2;
-    this.boardSize = boardSize || this.width * this.width;
-    this.mineNumber = mineNumber || this.width;
-
+    this.column = Math.round(Math.sqrt(map)) || Math.floor((autoSize(map.width)));
+    this.row = Math.round(Math.sqrt(map)) || Math.floor((autoSize(map.height)));
+    this.padding = pad;
+    this.zoneSize = size;
+    this.boardSize = this.column * this.row || 64;
+    this.mineNumber = mineNumber || this.column;
     this.zones = [];
     this.mines = [];
     this.values = Array.apply(null, new Array(this.boardSize)).map(Number.prototype.valueOf, 0);
+
+    function autoSize(n) {
+        /* Calculate the number of padding and zoneSize that can fit in n, without missing the first padding */
+        return (n - pad) / (size + pad);
+    }
+
+    this.autoFit = function (n) {
+        /* Try to reduce the amount of unused space in an inconvenient Canvas */
+        var x, y;
+
+        //Detect the space to small to be filled with zone
+        x = n.width - this.column * (this.zoneSize + this.padding) - this.padding;
+        y = n.height - this.row * (this.zoneSize + this.padding) - this.padding;
+
+        //Divides the amount left by number of padding
+        x = x / (this.column + 1);
+        y = y / (this.row + 1);
+
+        //Adjust the padding depending on which side is bigger (height or width)
+        if (x > y) {
+            this.padding = Math.round(this.padding + y);
+        } else {
+            this.padding = Math.round(this.padding + x);
+        }
+    }
 
     this.setMines = function () {
         /* Generates random unique numbers, which will be the positions of the mines */
@@ -78,25 +112,25 @@ function Board(width, zoneSize, padding, boardSize, mineNumber) {
 
     this.north = function (z) {
         /* Return the zone north to the "z" one unless we're at the top row */
-        if ((0 <= z && z < this.width) || z == this.boardSize) {
+        if ((0 <= z && z < this.column) || z == this.boardSize) {
             return this.boardSize;
         } else {
-            return z - this.width;
+            return z - this.column;
         }
     }
 
     this.south = function (z) {
         /* Return the zone south to the "z" one unless we're at the bottom row */
-        if ((this.boardSize - this.width <= z && z < this.boardSize) || z == this.boardSize) {
+        if ((this.boardSize - this.column <= z && z < this.boardSize) || z == this.boardSize) {
             return this.boardSize;
         } else {
-            return z + this.width;
+            return z + this.column;
         }
     }
 
     this.east = function (z) {
         /* Return the zone east to the "z" one unless we're at the eastern row */
-        if ((z % this.width == this.width - 1) || z == this.boardSize) {
+        if ((z % this.column == this.column - 1) || z == this.boardSize) {
             return this.boardSize;
         } else {
             return z + 1;
@@ -105,7 +139,7 @@ function Board(width, zoneSize, padding, boardSize, mineNumber) {
 
     this.west = function (z) {
         /* Return the zone west to the "z" one unless we're at the western row */
-        if ((z % this.width == 0) || z == this.boardSize) {
+        if ((z % this.column == 0) || z == this.boardSize) {
             return this.boardSize;
         } else {
             return z - 1;
@@ -115,8 +149,8 @@ function Board(width, zoneSize, padding, boardSize, mineNumber) {
     this.addZone = function () {
         /* Create a zone and add it to the board */
         var mine = false;
-        var x = (this.zoneSize + this.padding) * (this.zones.length % this.width) + this.padding;
-        var y = (this.zoneSize + this.padding) * Math.floor(this.zones.length / this.width) + this.padding;
+        var x = (this.zoneSize + this.padding) * (this.zones.length % this.column) + this.padding;
+        var y = (this.zoneSize + this.padding) * Math.floor(this.zones.length / this.column) + this.padding;
 
         if (this.hasMine(this.zones.length)) {
             mine = true;
@@ -230,17 +264,20 @@ function Board(width, zoneSize, padding, boardSize, mineNumber) {
         var column;
         var row;
 
-        if (x > (this.zoneSize + this.padding) * this.width || y > (this.zoneSize + this.padding) * this.width) {
+        if (x > (this.zoneSize + this.padding) * this.column || y > (this.zoneSize + this.padding) * this.column) {
             return undefined;
         } else {
             column = Math.floor(x / (this.zoneSize + this.padding));
             row = Math.floor(y / (this.zoneSize + this.padding));
 
-            return row * this.width + column;
+            return row * this.column + column;
         }
     }
 
     //So that the board is initialised when created
+    if (!Number.isInteger(map)) {
+        this.autoFit(map);
+    }
     this.setZone();
 
 }
