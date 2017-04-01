@@ -71,7 +71,7 @@ function Zone(x, y, mine, size, value) {
         this.isUnveiled = true;
         this.color = colorUnveiled;
         this.show();
-        
+
         if (this.mine) {
             return true;
 
