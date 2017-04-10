@@ -1,5 +1,5 @@
 var body = document.getElementsByTagName("body")[0];
-var canvas = createCanvas(body, "board");
+var canvas = createCanvas(body);
 var ctx = canvas.getContext("2d");
 var board;
 
