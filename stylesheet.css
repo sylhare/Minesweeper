@@ -1,6 +1,7 @@
 * {
     padding: 0;
     margin: 0;
+    position: relative;
 }
 
 h1 {
@@ -8,11 +9,48 @@ h1 {
     text-align: center;
     color: #FAFCFC;
     background-color: #505A5C;
+    box-shadow: 0px 5px #005A5C;
 }
 
-canvas {
+canvas,
+#board {
     font-family: "Calibri";
-    display: block;
-    margin: 0 auto;
     border: 5px solid grey;
+}
+
+#container {
+    text-align: center;
+    margin-top: 5px;
+    width: 100%;
+    float: left;
+    min-width: 550px;
+}
+
+#game,
+#right,
+#left {
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+#info {
+    float: right;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-size: 20px;
+    margin-right: 5px;
+    height: auto;
+}
+
+#game_info {
+    margin: 3px;
+    height: 25px;
+}
+
+#mine_img {
+    float: right;
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
 }

@@ -15,6 +15,7 @@
 Here are some stuff that I might add, now that I have a first version working:
 
 - A Counter for the time
+- ~More options on board object creation~
 - A Selector to choose the board size
 - A button to start the game (and the Counter)
 - A winning feature (with a reward for betting the game)

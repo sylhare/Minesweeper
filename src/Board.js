@@ -112,7 +112,7 @@ function Board(map, mineNumber) {
 
     this.north = function (z) {
         /* Return the zone north to the "z" one unless we're at the top row */
-        if ((0 <= z && z < this.column) || z == this.boardSize) {
+        if ((0 <= z && z < this.column) || z === this.boardSize) {
             return this.boardSize;
         } else {
             return z - this.column;
@@ -121,7 +121,7 @@ function Board(map, mineNumber) {
 
     this.south = function (z) {
         /* Return the zone south to the "z" one unless we're at the bottom row */
-        if ((this.boardSize - this.column <= z && z < this.boardSize) || z == this.boardSize) {
+        if ((this.boardSize - this.column <= z && z < this.boardSize) || z === this.boardSize) {
             return this.boardSize;
         } else {
             return z + this.column;
@@ -130,7 +130,7 @@ function Board(map, mineNumber) {
 
     this.east = function (z) {
         /* Return the zone east to the "z" one unless we're at the eastern row */
-        if ((z % this.column == this.column - 1) || z == this.boardSize) {
+        if ((z % this.column === this.column - 1) || z === this.boardSize) {
             return this.boardSize;
         } else {
             return z + 1;
@@ -139,7 +139,7 @@ function Board(map, mineNumber) {
 
     this.west = function (z) {
         /* Return the zone west to the "z" one unless we're at the western row */
-        if ((z % this.column == 0) || z == this.boardSize) {
+        if ((z % this.column === 0) || z === this.boardSize) {
             return this.boardSize;
         } else {
             return z - 1;
@@ -177,8 +177,10 @@ function Board(map, mineNumber) {
     }
 
     this.update = function (x, y, evt) {
+        /* Action to perform based on event received and the coordinates of the mouse */
         var z = this.getZone(x, y);
-        if (this.zones[z] != undefined) {
+
+        if (this.zones[z] !== undefined) {
             switch (evt) {
                 case 'click':
                     this.unveil(z);
@@ -219,7 +221,6 @@ function Board(map, mineNumber) {
                 coord = this.expand(z);
 
                 for (j = 0; j < coord.length; j++) {
-                    //this.zones[coord[j]].unveil();
                     if (!this.zones[coord[j]].isUnveiled) {
                         this.unveil(coord[j]);
                     }
@@ -231,6 +232,7 @@ function Board(map, mineNumber) {
     }
 
     this.expand = function (z) {
+        /* Return an array with all available surrounding zones of the *z* input one */
         var coord = [this.north(z),
                     this.north(this.east(z)),
                     this.north(this.west(z)),
@@ -241,7 +243,7 @@ function Board(map, mineNumber) {
                     this.west(z)];
 
         for (i = 0; i < coord.length; i++) {
-            if (coord[i] == this.boardSize) {
+            if (coord[i] === this.boardSize) {
                 coord.splice(i, 1);
                 i--;
 

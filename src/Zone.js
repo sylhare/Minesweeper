@@ -73,8 +73,7 @@ function Zone(x, y, mine, size, value) {
         this.show();
 
         if (this.mine) {
-            return true;
-
+            return true;    
         } else {
             return false;
         }
