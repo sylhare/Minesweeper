@@ -3,14 +3,14 @@
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/uses-js.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/check-it-out.svg)](http://forthebadge.com) 
 
-###Instructions
+### Instructions
 
 1. First click on the green button to download or click [here](https://github.com/Sylhare/Minesweeper/archive/master.zip)
 2. Unzip the file like a boss
 3. Click on `index.html` to open the file in your default browser
 4. Play !
 
-###Updates to come
+### Updates to come
 
 Here are some stuff that I might add, now that I have a first version working:
 
@@ -19,6 +19,7 @@ Here are some stuff that I might add, now that I have a first version working:
 - A Selector to choose the board size
 - A button to start the game (and the Counter)
 - A winning feature (with a reward for betting the game)
+- Have the mine explode when you click on it
 - Have the number of mine to find
 - Some clean up
 

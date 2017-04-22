@@ -9,23 +9,20 @@ function setup() {
     board = new Board(64);
     //board = new Board(canvas);
 
-    canvas.addEventListener('mousemove', function (evt) {
-        var pos = getMousePos(canvas, evt);
-        board.update(pos.x, pos.y, evt.type);
-    });
-    canvas.addEventListener('click', function (evt) {
-        var pos = getMousePos(canvas, evt);
-        board.update(pos.x, pos.y, evt.type);
+    addListener('mousemove');
+    addListener('click');
+    addListener('contextmenu');
+    
+    setInterval(draw, 1000);
 
-    });
-    canvas.addEventListener('contextmenu', function (evt) {
+}
+
+function addListener(event) {
+    canvas.addEventListener(event, function (evt) {
         var pos = getMousePos(canvas, evt);
         evt.preventDefault();
         board.update(pos.x, pos.y, evt.type);
     });
-
-    setInterval(draw, 1000);
-
 }
 
 function draw() {
@@ -52,13 +49,13 @@ function addText(parentId, stuff, id) {
     var s = stuff || "error";
     var node = document.createTextNode(s);
     var parent = document.getElementById(parentId);
-    
+
     element.appendChild(node);
     element.id = id || "info";
-    
+
     parent.appendChild(element);
     //parent.insertBefore(element, parent.childNodes[0]);
-    
+
 
 }
 
