@@ -63,17 +63,17 @@ function Zone(x, y, mine, size, value) {
     this.hover = function () {
         /* Update the color of the zone when called */
         this.color = colorHovered;
-        this.show();
+        //this.draw();
     }
 
     this.unveil = function () {
         /* Returns different scenario when the zone is unveiled*/
         this.isUnveiled = true;
         this.color = colorUnveiled;
-        this.show();
+        //this.draw();
 
         if (this.mine) {
-            return true;    
+            return true;
         } else {
             return false;
         }
@@ -87,11 +87,11 @@ function Zone(x, y, mine, size, value) {
             this.flag = false;
         }
 
-        this.show();
+        //this.draw();
     }
 
 
-    this.show = function () {
+    this.draw = function () {
         /* allows the zone to print itself in a canvas */
 
         //Draw the zone background
