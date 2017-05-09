@@ -2,37 +2,42 @@ var pad = 2; //Value for the padding
 var size = 30; //Value for the size of a zone (a square)
 var background = "#FFF"; //Color of the board background
 
+function autoSize(n) {
+    /* Calculate the number of padding and zoneSize that can fit in n, without missing the first padding */
+    return (n - pad) / (size + pad);
+}
+
 function Board(map, mineNumber) {
     /*
-        Board accept two variables, map which defines how the board is created,
-        If you feed Board with a canvas, it will fill it with cases, 
-        If you feed Board with a number, it will create a square of zones starting top left
-        A board is composed of multiple independant square zones
-        example:
-        
-                         North
-    
-                -------- board --------
-                 0  1  2  3  4  5  6  7         
-                 8  9 10 11 12 13 14 15         
-                16 17 18 19 20 21 22 23         
-        West    24 25 26 27 28 29 30 31     East
-                32 33 34 35 36 37 38 39
-                40 41 42 43 44 45 46 47
-                48 49 50 51 52 53 54 55 
-                56 57 58 59 60 61 62 63
-                
-                        South
-                        
-        64 - boardSize
-        8  - column
-        
-         -- zoneSize 
-         __           __   __
-        |  | Padding |  | |  | 
-         --           --   --
-    
+            Board accept two variables, map which defines how the board is created,
+            If you feed Board with a canvas, it will fill it with cases,
+            If you feed Board with a number, it will create a square of zones starting top left
+            A board is composed of multiple independant square zones
+            example:
+
+                             North
+
+                    -------- board --------
+                     0  1  2  3  4  5  6  7
+                     8  9 10 11 12 13 14 15
+                    16 17 18 19 20 21 22 23
+            West    24 25 26 27 28 29 30 31     East
+                    32 33 34 35 36 37 38 39
+                    40 41 42 43 44 45 46 47
+                    48 49 50 51 52 53 54 55
+                    56 57 58 59 60 61 62 63
+
+                            South
+
+            64 - boardSize
+            8  - column
+
+             -- zoneSize
+             __           __   __
+            |  | Padding |  | |  |
+             --           --   --
     */
+
     this.column = Math.round(Math.sqrt(map)) || Math.floor((autoSize(map.width)));
     this.row = Math.round(Math.sqrt(map)) || Math.floor((autoSize(map.height)));
     this.padding = pad;
@@ -42,11 +47,6 @@ function Board(map, mineNumber) {
     this.zones = [];
     this.mines = [];
     this.values = Array.apply(null, new Array(this.boardSize)).map(Number.prototype.valueOf, 0);
-
-    function autoSize(n) {
-        /* Calculate the number of padding and zoneSize that can fit in n, without missing the first padding */
-        return (n - pad) / (size + pad);
-    }
 
     this.autoFit = function (n) {
         /* Try to reduce the amount of unused space in an inconvenient Canvas */
@@ -66,10 +66,10 @@ function Board(map, mineNumber) {
         } else {
             this.padding = Math.round(this.padding + x);
         }
-    }
+    };
 
     this.setMines = function () {
-        /* Generates random unique numbers, which will be the positions of the mines */
+
 
         while (this.mines.length < this.mineNumber) {
             var n = Math.ceil(Math.random() * (this.boardSize - 1));
@@ -99,10 +99,8 @@ function Board(map, mineNumber) {
         var z, coord, i, j;
 
         for (var i = 0; i <= this.mines.length; i++) {
-            z = this.mines[i];
-
             //Increment the value for all surrounding zones
-            coord = this.expand(z);
+            coord = this.expand(this.mines[i]);
 
             for (var j = 0; j < coord.length; j++) {
                 this.values[coord[j]] += 1;
@@ -177,15 +175,14 @@ function Board(map, mineNumber) {
 
     }
 
-    this.update = function (x, y, evt) {
+    this.update = function (x, y, evt, canvas) {
         /* Action to perform based on event received and the coordinates of the mouse */
         var z = this.getZone(x, y);
 
-        if (this.zones[z] !== undefined) {
+        if (this.zones[z] !== null) {
             switch (evt) {
                 case "click":
-                    this.unveil(z);
-                    this.draw();
+                    this.unveil(z, canvas);
                     break;
                 case "contextmenu":
                     this.zones[z].switchFlag();
@@ -196,6 +193,7 @@ function Board(map, mineNumber) {
                 default:
                     //console.log("Unusual behaviour: " + evt);
             }
+            this.draw(canvas);
         }
     }
 
@@ -209,7 +207,7 @@ function Board(map, mineNumber) {
         //alert("you lose");
     }
 
-    this.explode = function (zone) {
+    this.explode = function (zone, canvas) {
         /* Dispatch custom event "explode" */
         var explode = new CustomEvent("explode", {
             "detail": {
@@ -220,13 +218,13 @@ function Board(map, mineNumber) {
         canvas.dispatchEvent(explode);
     }
 
-    this.unveil = function (z) {
+    this.unveil = function (z, canvas) {
         /* Defines what to do when the board is clicked */
         var coord, j;
 
         if (!this.zones[z].flag && !this.zones[z].Unveiled) {
             if (this.zones[z].unveil()) {
-                this.explode(this.zones[z]);
+                this.explode(this.zones[z], canvas);
                 this.gameOver();
             }
 
@@ -267,16 +265,17 @@ function Board(map, mineNumber) {
 
     }
 
-    this.draw = function () {
+    this.draw = function (canvas) {
         /* Drawing the state of the board */
-
+        var ctx = canvas.getContext("2d");
+        
         //Clean up the board
         ctx.fillStyle = "#FFF";
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
         //The board will ask each zone to draw itself
         for (var i = 0; i < this.zones.length; i++) {
-            this.zones[i].draw();
+            this.zones[i].draw(canvas);
         }
     }
 
@@ -286,7 +285,7 @@ function Board(map, mineNumber) {
         var row;
 
         if (x > (this.zoneSize + this.padding) * this.column || y > (this.zoneSize + this.padding) * this.column) {
-            return undefined;
+            return null;
         } else {
             column = Math.floor(x / (this.zoneSize + this.padding));
             row = Math.floor(y / (this.zoneSize + this.padding));

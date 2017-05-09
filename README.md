@@ -14,14 +14,14 @@
 
 Here are some stuff that I might add, now that I have a first version working:
 
-- A Counter for the time
-- ~More options on board object creation~
-- A Selector to choose the board size
-- A button to start the game (and the Counter)
-- ~Have the mine explode when you click on it~
-- A winning feature (with a reward for betting the game)
-- ~Have the number of mine to find~
-- Some clean up
+- [ ] A Counter for the time
+- [X] More options on board object creation
+- [ ] A Selector to choose the board size
+- [ ] A button to start the game (and the Counter)
+- [X] Have the mine explode when you click on it
+- [ ] A winning feature (with a reward for beating the game)
+- [X] Have the number of mine to find
+- [ ] Some clean up
 
 
 ### More information on the project

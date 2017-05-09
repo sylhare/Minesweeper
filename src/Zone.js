@@ -20,7 +20,7 @@ function Zone(x, y, mine, size, value) {
 
     //Can't be called from outside
     function colorSelector(n) {
-        /* Select the color based on the value, gradient made with http://www.perbang.dk/rgbgradient/ */
+        /* Select the color based on the value */
         var color;
 
         switch (n) {
@@ -63,14 +63,12 @@ function Zone(x, y, mine, size, value) {
     this.hover = function () {
         /* Update the color of the zone when called */
         this.color = colorHovered;
-        //this.draw();
     }
 
     this.unveil = function () {
         /* Returns different scenario when the zone is unveiled*/
         this.isUnveiled = true;
         this.color = colorUnveiled;
-        //this.draw();
 
         if (this.mine) {
             return true;
@@ -87,12 +85,13 @@ function Zone(x, y, mine, size, value) {
             this.flag = false;
         }
 
-        //this.draw();
     }
 
 
-    this.draw = function () {
+    this.draw = function (canvas) {
         /* allows the zone to print itself in a canvas */
+        
+        var ctx = canvas.getContext("2d");
 
         //Draw the zone background
         ctx.beginPath();

@@ -10,6 +10,7 @@ function Explosion(x, y, number, size, speed) {
     var n = number || 20;
     this.particles = [];
 
+    // Creating the particles of the explosion when called
     for (var i = 0; i < n; i++) {
         var p = new Particle()
 
@@ -25,20 +26,21 @@ function Explosion(x, y, number, size, speed) {
 
     }
 
-    this.update = function () {
+    this.update = function (canvas) {
         /*
             Update the explosion
         */
         for (var i = 0; i < this.particles.length; i++) {
             this.particles[i].update();
-            this.particles[i].draw(ctx);
+            this.particles[i].draw(canvas);
         }
     }
 }
 
 
-// Canvas and ctx are in sketch.js
 function randomColor() {
+    /* Return a random color */
+    
     var red = "#CC1600";
     var darkOrange = "#D33407";
     var orange = "#E17016";
@@ -62,6 +64,8 @@ function randomColor() {
 }
 
 function randomDirection() {
+    /* Return a vector pointing to a random direction */
+    
     var angle = random(0, 360) * Math.PI / 180;
     var direction = {
         x: Math.cos(angle),
@@ -72,10 +76,16 @@ function randomDirection() {
 }
 
 function random(min, max) {
+    /* Generates a random number between max and min */
     return min + Math.random() * (max - min);
 }
 
 function Particle() {
+    /*
+        Particles simple colored dot with a fixed size that moves
+        in a direction at a certain speed.
+    
+    */
     this.x;
     this.y;
     this.radius;
@@ -88,7 +98,9 @@ function Particle() {
     this.color;
 
     this.update = function () {
-        // Particle radius being scaling down
+        /* Update the particle */
+        
+        // Particle radius being scaled down
         this.radius -= this.scale / 5;
 
 
@@ -102,7 +114,11 @@ function Particle() {
 
     }
 
-    this.draw = function (ctx) {
+    this.draw = function (canvas) {
+        /* Draw the particles on the canvas */
+        
+        var ctx = canvas.getContext("2d");
+        
         // translates the particle from previous place to new one
         ctx.save();
         ctx.translate(this.x, this.y);
