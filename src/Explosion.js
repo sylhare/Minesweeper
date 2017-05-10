@@ -1,46 +1,11 @@
-function Explosion(x, y, number, size, speed) {
-    /*
-        Creates an explosion with random particles and speed
-    
-    */
-    var size_max = size || 9;
-    var size_min = 4;
-    var speed_max = speed || 15;
-    var speed_min = 7;
-    var n = number || 20;
-    this.particles = [];
-
-    // Creating the particles of the explosion when called
-    for (var i = 0; i < n; i++) {
-        var p = new Particle()
-
-        p.x = x;
-        p.y = y;
-        p.radius = random(size_min, size_max);
-        p.scale = random(4, 10);
-        p.color = randomColor();
-        p.speed = random(speed_min, speed_max);
-        p.direction = randomDirection();
-
-        this.particles.push(p);
-
-    }
-
-    this.update = function (canvas) {
-        /*
-            Update the explosion
-        */
-        for (var i = 0; i < this.particles.length; i++) {
-            this.particles[i].update();
-            this.particles[i].draw(canvas);
-        }
-    }
+function random(min, max) {
+    /* Generates a random number between max and min */
+    return min + Math.random() * (max - min);
 }
-
 
 function randomColor() {
     /* Return a random color */
-    
+
     var red = "#CC1600";
     var darkOrange = "#D33407";
     var orange = "#E17016";
@@ -65,7 +30,7 @@ function randomColor() {
 
 function randomDirection() {
     /* Return a vector pointing to a random direction */
-    
+
     var angle = random(0, 360) * Math.PI / 180;
     var direction = {
         x: Math.cos(angle),
@@ -75,10 +40,52 @@ function randomDirection() {
     return direction;
 }
 
-function random(min, max) {
-    /* Generates a random number between max and min */
-    return min + Math.random() * (max - min);
+function Explosion(x, y, number, size, speed) {
+    /*
+        Creates an explosion with random particles and speed
+    
+    */
+    var sizeMax = size || 9;
+    var sizeMin = 4;
+    var speedMax = speed || 15;
+    var speedMin = 7;
+    var n = number || 20;
+    this.particles = [];
+
+    this.initiate = function() {
+        /* Initiate the explosion by creating all particles */
+        
+        for (var i = 0; i < n; i++) {
+            var p = new Particle();
+
+            p.x = x;
+            p.y = y;
+            p.radius = random(sizeMin, sizeMax);
+            p.scale = random(4, 10);
+            p.color = randomColor();
+            p.speed = random(speedMin, speedMax);
+            p.direction = randomDirection();
+
+            this.particles.push(p);
+
+        }
+    }
+
+    this.update = function (canvas) {
+        /*
+            Update the explosion
+        */
+        for (var i = 0; i < this.particles.length; i++) {
+            this.particles[i].update();
+            this.particles[i].draw(canvas);
+        }
+    };
+    
+    //Initiate the explosion when the function is called
+    this.initiate();
 }
+
+
 
 function Particle() {
     /*
@@ -99,7 +106,7 @@ function Particle() {
 
     this.update = function () {
         /* Update the particle */
-        
+
         // Particle radius being scaled down
         this.radius -= this.scale / 5;
 
@@ -116,9 +123,9 @@ function Particle() {
 
     this.draw = function (canvas) {
         /* Draw the particles on the canvas */
-        
+
         var ctx = canvas.getContext("2d");
-        
+
         // translates the particle from previous place to new one
         ctx.save();
         ctx.translate(this.x, this.y);

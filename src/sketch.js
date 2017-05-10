@@ -1,3 +1,27 @@
+var board
+
+function setup() {
+    /* Setup the minesweeper game */
+    board = new Board(64);
+    //board = new Board(canvas);
+}
+
+function draw(canvas) {
+    /* Draw the canvas */
+    board.draw(canvas);
+
+}
+
+function getMousePos(canvas, evt) {
+    /* Return the position of the mouse within the canvas */
+    var rect = canvas.getBoundingClientRect();
+    return {
+        x: Math.round(evt.clientX - rect.left),
+        y: Math.round(evt.clientY - rect.top)
+    };
+}
+
+
 function addListener(canvas, event) {
     /* Creates the listener to the vent in the canvas */
 
@@ -9,7 +33,7 @@ function addListener(canvas, event) {
 }
 
 function addExplodeListener(canvas) {
-    /* Creates the listener and handler for the explode event */
+    /* Creates the listener and handler for the explode event in the board */
 
     canvas.addEventListener("explode", function (evt) {
         var explosion = new Explosion(evt.detail.x, evt.detail.y);
@@ -24,16 +48,6 @@ function addExplodeListener(canvas) {
     }, false);
 }
 
-function getMousePos(canvas, evt) {
-    /* Return the position of the mouse within the canvas */
-    var rect = canvas.getBoundingClientRect();
-    return {
-        x: Math.round(evt.clientX - rect.left),
-        y: Math.round(evt.clientY - rect.top)
-    };
-}
-
-
 function createCanvas(body, id, width, height) {
     /* Create a canvas and but it in "body" can be any tagnamed element, id, width and height of teh canvas can be configured */
     var canvas = document.createElement("canvas");
@@ -41,7 +55,7 @@ function createCanvas(body, id, width, height) {
     canvas.id = id || "board";
     canvas.width = width || 258;
     canvas.height = height || 258;
-    canvas.oncontextmenu = "javascript:return false;";
+    //canvas.oncontextmenu = "javascript:return false;";
 
     body.appendChild(canvas);
 
@@ -62,18 +76,6 @@ function addText(parentId, stuff, id) {
 
 }
 
-function setup() {
-    /* Setup the minesweeper game */
-    board = new Board(64);
-    //board = new Board(canvas);
-}
-
-function draw(canvas) {
-    /* Draw the canvas */
-    board.draw(canvas);
-
-}
-
 window.onload = function () {
     var body = document.getElementById("game");
     //var body = document.getElementsByTagName("body")[0];
@@ -88,4 +90,4 @@ window.onload = function () {
     setup(canvas);
     addText("game_info", board.mineNumber);
     draw(canvas);
-}
+};

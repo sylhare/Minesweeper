@@ -63,7 +63,7 @@ function Zone(x, y, mine, size, value) {
     this.hover = function () {
         /* Update the color of the zone when called */
         this.color = colorHovered;
-    }
+    };
 
     this.unveil = function () {
         /* Returns different scenario when the zone is unveiled*/

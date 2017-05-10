@@ -83,7 +83,7 @@ function Board(map, mineNumber) {
         this.mines.sort(function (a, b) {
             return a - b;
         });
-    }
+    };
 
     this.hasMine = function (n) {
         /* Check if an integer n is a zone where there's a mine */
@@ -98,11 +98,11 @@ function Board(map, mineNumber) {
         /* Generates this.values[] which stores the number that says how many mines are around */
         var z, coord, i, j;
 
-        for (var i = 0; i <= this.mines.length; i++) {
+        for (i = 0; i <= this.mines.length; i++) {
             //Increment the value for all surrounding zones
             coord = this.expand(this.mines[i]);
 
-            for (var j = 0; j < coord.length; j++) {
+            for (j = 0; j < coord.length; j++) {
                 this.values[coord[j]] += 1;
             }
 
@@ -179,7 +179,7 @@ function Board(map, mineNumber) {
         /* Action to perform based on event received and the coordinates of the mouse */
         var z = this.getZone(x, y);
 
-        if (this.zones[z] !== null) {
+        if (this.zones[z]) {
             switch (evt) {
                 case "click":
                     this.unveil(z, canvas);
@@ -199,7 +199,6 @@ function Board(map, mineNumber) {
 
     this.gameOver = function () {
         /* Unveil all the mines of the board */
-        var i;
 
         for (var i = 0; i < this.mines.length; i++) {
             this.zones[this.mines[i]].unveil();
@@ -281,17 +280,16 @@ function Board(map, mineNumber) {
 
     this.getZone = function (x, y) {
         /* Give the zone number of a given position (x, y) */
-        var column;
-        var row;
+        var column, row;
+        var zone = null;
 
-        if (x > (this.zoneSize + this.padding) * this.column || y > (this.zoneSize + this.padding) * this.column) {
-            return null;
-        } else {
+        if (x <= (this.zoneSize + this.padding) * this.column && y <= (this.zoneSize + this.padding) * this.column) {
             column = Math.floor(x / (this.zoneSize + this.padding));
             row = Math.floor(y / (this.zoneSize + this.padding));
-
-            return row * this.column + column;
+            zone = row * this.column + column;
         }
+
+        return zone;
     }
 
     //So that the board is initialised when created
