@@ -40,53 +40,6 @@ function randomDirection() {
     return direction;
 }
 
-function Explosion(x, y, number, size, speed) {
-    /*
-        Creates an explosion with random particles and speed
-    
-    */
-    var sizeMax = size || 9;
-    var sizeMin = 4;
-    var speedMax = speed || 15;
-    var speedMin = 7;
-    var n = number || 20;
-    this.particles = [];
-
-    this.initiate = function() {
-        /* Initiate the explosion by creating all particles */
-        
-        for (var i = 0; i < n; i++) {
-            var p = new Particle();
-
-            p.x = x;
-            p.y = y;
-            p.radius = random(sizeMin, sizeMax);
-            p.scale = random(4, 10);
-            p.color = randomColor();
-            p.speed = random(speedMin, speedMax);
-            p.direction = randomDirection();
-
-            this.particles.push(p);
-
-        }
-    }
-
-    this.update = function (canvas) {
-        /*
-            Update the explosion
-        */
-        for (var i = 0; i < this.particles.length; i++) {
-            this.particles[i].update();
-            this.particles[i].draw(canvas);
-        }
-    };
-    
-    //Initiate the explosion when the function is called
-    this.initiate();
-}
-
-
-
 function Particle() {
     /*
         Particles simple colored dot with a fixed size that moves
@@ -119,7 +72,7 @@ function Particle() {
         this.x += this.direction.x * this.speed;
         this.y += this.direction.y * this.speed;
 
-    }
+    };
 
     this.draw = function (canvas) {
         /* Draw the particles on the canvas */
@@ -141,6 +94,50 @@ function Particle() {
         ctx.fill();
 
         ctx.restore();
+    };
+}
+
+function Explosion(x, y, number, size, speed) {
+    /*
+        Creates an explosion with random particles and speed
+    
+    */
+    var sizeMax = size || 9;
+    var sizeMin = 4;
+    var speedMax = speed || 15;
+    var speedMin = 7;
+    var n = number || 20;
+    this.particles = [];
+
+    this.initiate = function () {
+        /* Initiate the explosion by creating all particles */
+
+        for (var i = 0; i < n; i++) {
+            var p = new Particle();
+
+            p.x = x;
+            p.y = y;
+            p.radius = random(sizeMin, sizeMax);
+            p.scale = random(4, 10);
+            p.color = randomColor();
+            p.speed = random(speedMin, speedMax);
+            p.direction = randomDirection();
+
+            this.particles.push(p);
+
+        };
     }
 
+    this.update = function (canvas) {
+        /*
+            Update the explosion
+        */
+        for (var i = 0; i < this.particles.length; i++) {
+            this.particles[i].update();
+            this.particles[i].draw(canvas);
+        }
+    };
+
+    //Initiate the explosion when the function is called
+    this.initiate();
 }

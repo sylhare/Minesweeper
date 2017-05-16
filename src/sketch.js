@@ -1,4 +1,4 @@
-var board
+var board;
 
 function setup() {
     /* Setup the minesweeper game */

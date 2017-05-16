@@ -92,7 +92,7 @@ function Board(map, mineNumber) {
         } else {
             return false;
         }
-    }
+    };
 
     this.setValues = function () {
         /* Generates this.values[] which stores the number that says how many mines are around */
@@ -230,7 +230,7 @@ function Board(map, mineNumber) {
             if (!this.zones[z].value) {
                 coord = this.expand(z);
 
-                for (var j = 0; j < coord.length; j++) {
+                for (j = 0; j < coord.length; j++) {
                     if (!this.zones[coord[j]].isUnveiled) {
                         this.unveil(coord[j]);
                     }

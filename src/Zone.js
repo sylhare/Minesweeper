@@ -75,7 +75,7 @@ function Zone(x, y, mine, size, value) {
         } else {
             return false;
         }
-    }
+    };
 
     this.switchFlag = function () {
         /* when called change this.flag to the opposite value, switching it on and off */
