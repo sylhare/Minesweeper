@@ -6,23 +6,44 @@
 ### Instructions
 
 1. First click on the green button to download or click [here](https://github.com/Sylhare/Minesweeper/archive/master.zip)
-2. Unzip the file like a boss
+2. Unzip the file like a *boss*.
 3. Click on `index.html` to open the file in your default browser
 4. Play !
 
+### How to Play
+
+Here is a quick guide on how to play the game.
+
 ### Updates to come
 
-Here are some stuff that I might add, now that I have a first version working:
+Here are some stuff that I might add, I have scheduled them for the next version.
+
+#### Version v1
+
+- [X] Show the Minesweeper Board
+- [X] Make the Board reactive on clicks
+- [X] Have Flags on unclick case when right click
+- [X] Uncover case and all empty ones surrounding on left click (flagged ones remains hidden)
+- [X] Have Mine hidden randomly in the Board
+- [X] Uncover all mines when one is clicked
+
+
+#### Version v2
 
 - [ ] A Counter for the time
-- [X] More options on board object creation
-- [ ] A Selector to choose the board size
 - [ ] A button to start the game (and the Counter)
+- [X] More options on board object creation
+- [X] Have a autofit function to match the size of the board and the size of the screen 
 - [X] Have the mine explode when you click on it
 - [ ] A winning feature (with a reward for beating the game)
 - [X] Have the number of mine to find
-- [ ] Some clean up
+- [X] Some clean up of V1 code
 
+#### Version v3
+
+- [ ] Have a saving feature
+- [ ] A Selector to choose the board size
+- [ ] Page design enhancement
 
 ### More information on the project
 
