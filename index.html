@@ -3,14 +3,20 @@
 
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Sylhare">
+    <meta name="description" content="Basic Minesweeper game in Javascript">
+    <meta name="link" content="https://github.com/Sylhare/Minesweeper">
+    
     <title> MineSweeper</title>
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
 
-    <script defer="true" language="javascript" type="text/javascript" src="src/sketch.js"></script>
+    <script defer="true" language="javascript" type="text/javascript" src="src/Sketch.js"></script>
     <script language="javascript" type="text/javascript" src="src/Zone.js"></script>
     <script language="javascript" type="text/javascript" src="src/Board.js"></script>
-    <script language="javascript" type="text/javascript" src="src/explosion.js"></script>
+    <script language="javascript" type="text/javascript" src="src/Explosion.js"></script>
+    <script language="javascript" type="text/javascript" src="src/Timer.js"></script>
 
 </head>
 
@@ -18,7 +24,7 @@
     <h1> Mine Sweeper </h1>
     <div id="container">
         <div id="left">
-            <p> </p>
+            <timer id=timer>00:00</timer>
         </div>
         <div id="game">
             <div id="game_info">

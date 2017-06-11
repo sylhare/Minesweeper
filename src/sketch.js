@@ -48,6 +48,15 @@ function addExplodeListener(canvas) {
     }, false);
 }
 
+function setTimer(id) {
+    /* Set the timer and update the html with the specified id */
+    var timer = new Timer();
+    timer.start();
+    setInterval(function () {
+        updateTextNode(id, timer.counter);
+    }, 1000);
+}
+
 function createCanvas(body, id, width, height) {
     /* Create a canvas and but it in "body" can be any tagnamed element, id, width and height of teh canvas can be configured */
     var canvas = document.createElement("canvas");
@@ -62,10 +71,17 @@ function createCanvas(body, id, width, height) {
     return document.getElementById(canvas.id);
 }
 
-function addText(parentId, stuff, id) {
+function updateTextNode(id, text) {
+    /* Update text node of the defined id with text */
+    var node = document.getElementById(id);
+    node.innerHTML = text || "error";
+}
+
+function addTextNode(parentId, text, id) {
+    /* Add a text node under a parentId with a defined id in the HTML */
     var element = document.createElement("span");
-    var s = stuff || "error";
-    var node = document.createTextNode(s);
+    var p = text || "error";
+    var node = document.createTextNode(p);
     var parent = document.getElementById(parentId);
 
     element.appendChild(node);
@@ -77,6 +93,8 @@ function addText(parentId, stuff, id) {
 }
 
 window.onload = function () {
+    /* Main of the program, defines what is being done when the page loads */
+
     var body = document.getElementById("game");
     //var body = document.getElementsByTagName("body")[0];
     var canvas = createCanvas(body); //Used also in Zone.js and Board.js to draw the game
@@ -86,8 +104,9 @@ window.onload = function () {
     addListener(canvas, "click");
     addListener(canvas, "contextmenu");
     addExplodeListener(canvas);
+    setTimer("timer");
 
     setup(canvas);
-    addText("game_info", board.mineNumber);
+    addTextNode("game_info", board.mineNumber);
     draw(canvas);
 };

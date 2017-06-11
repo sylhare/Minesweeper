@@ -107,7 +107,7 @@ function Board(map, mineNumber) {
             }
 
         }
-    }
+    };
 
     this.north = function (z) {
         /* Return the zone north to the "z" one unless we're at the top row */
@@ -267,7 +267,7 @@ function Board(map, mineNumber) {
     this.draw = function (canvas) {
         /* Drawing the state of the board */
         var ctx = canvas.getContext("2d");
-        
+
         //Clean up the board
         ctx.fillStyle = "#FFF";
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);

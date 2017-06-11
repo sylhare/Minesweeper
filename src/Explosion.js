@@ -125,8 +125,8 @@ function Explosion(x, y, number, size, speed) {
 
             this.particles.push(p);
 
-        };
-    }
+        }
+    };
 
     this.update = function (canvas) {
         /*

@@ -1,4 +1,4 @@
-# Minesweeper
+# Minesweeper  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b4bffb1c4df447549abecb0274433c8f)](https://www.codacy.com/app/Sylhare/Minesweeper?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Sylhare/Minesweeper&amp;utm_campaign=Badge_Grade)
 -------------
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/uses-js.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/check-it-out.svg)](http://forthebadge.com) 
@@ -14,11 +14,13 @@
 
 Here is a quick guide on how to play the game.
 
+:construction: in progress
+
 ### Updates to come
 
 Here are some stuff that I might add, I have scheduled them for the next version.
 
-#### Version v1
+#### Version v1 -> [Released !!](https://github.com/Sylhare/Minesweeper/releases/tag/v1.0) 
 
 - [X] Show the Minesweeper Board
 - [X] Make the Board reactive on clicks
@@ -28,22 +30,28 @@ Here are some stuff that I might add, I have scheduled them for the next version
 - [X] Uncover all mines when one is clicked
 
 
-#### Version v2
+#### Version v2 :construction: 
 
-- [ ] A Counter for the time
-- [ ] A button to start the game (and the Counter)
+- [X] A Counter for the time
+- [ ] A button to start the game (and the Tounter)
+- [X] Display the amount of mine to find in the game
 - [X] More options on board object creation
 - [X] Have a autofit function to match the size of the board and the size of the screen 
 - [X] Have the mine explode when you click on it
 - [ ] A winning feature (with a reward for beating the game)
 - [X] Have the number of mine to find
-- [X] Some clean up of V1 code
+- [ ] Document the "How to Play" section
+- [X] Clean up of V1 code
 
 #### Version v3
 
-- [ ] Have a saving feature
+- [ ] A button to restart the game (and the Timer)
 - [ ] A Selector to choose the board size
 - [ ] Page design enhancement
+- [ ] Make it portable (for phones, or in an App)
+- [ ] Reduce cyclomatic complexity
+- [ ] Have a saving feature (using cookies?)
+- [ ] Clean up of V2 code
 
 ### More information on the project
 
