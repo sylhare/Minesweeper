@@ -90,7 +90,7 @@ function Zone(x, y, mine, size, value) {
 
     this.draw = function (canvas) {
         /* allows the zone to print itself in a canvas */
-        
+
         var ctx = canvas.getContext("2d");
 
         //Draw the zone background

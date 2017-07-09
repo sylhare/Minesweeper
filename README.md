@@ -12,15 +12,19 @@
 
 ### How to Play
 
-Here is a quick guide on how to play the game.
+Here is a quick guide on how to play the game:
 
-:construction: in progress
+- Right click on a gray square to unveil it.
+- The number on the unveiled square reveals the number of mine directly arounf
+- Left click on a gray square to flag it (a red flag will appear).
+- The goal is to unveil all of the case that does not contain any mines and flag all of the squares that containes a mine.
+- the number of mines is at the top of the canvas.
 
 ### Updates to come
 
 Here are some stuff that I might add, I have scheduled them for the next version.
 
-#### Version v1 -> [Released !!](https://github.com/Sylhare/Minesweeper/releases/tag/v1.0) 
+#### Version v1.0 -> [Released !!](https://github.com/Sylhare/Minesweeper/releases/tag/v1.0) 
 
 - [X] Show the Minesweeper Board
 - [X] Make the Board reactive on clicks
@@ -30,20 +34,20 @@ Here are some stuff that I might add, I have scheduled them for the next version
 - [X] Uncover all mines when one is clicked
 
 
-#### Version v2 :construction: 
+#### Version v2.0 -> :construction: 
 
 - [X] A Counter for the time
-- [ ] A button to start the game (and the Tounter)
+- [ ] A button to start the game (and the Timer)
 - [X] Display the amount of mine to find in the game
 - [X] More options on board object creation
 - [X] Have a autofit function to match the size of the board and the size of the screen 
 - [X] Have the mine explode when you click on it
 - [ ] A winning feature (with a reward for beating the game)
 - [X] Have the number of mine to find
-- [ ] Document the "How to Play" section
+- [X] Document the "How to Play" section
 - [X] Clean up of V1 code
 
-#### Version v3
+#### Version v3.0
 
 - [ ] A button to restart the game (and the Timer)
 - [ ] A Selector to choose the board size
@@ -55,6 +59,12 @@ Here are some stuff that I might add, I have scheduled them for the next version
 
 ### More information on the project
 
-I used javascript without any framework.</br> 
-The minesweeper is rendered in a canvas object (I thought of an other option, like using a table in HTML and react.js to update it, maybe for later).</br>
-The project is build with `sketch.js` that does the control and set-up, then there's `Board.js` for the minesweeper board model that is rendered through a lot of zones in `Zone.js` which also have some logic for the display.
+I used javascript and CSS without any framework. The minesweeper is rendered in a canvas object. 
+
+The project is build with:
+
+- `Sketch.js` that does the control and set-up.
+- `Board.js` for the minesweeper board model that is rendered through a lot of zones.
+- `Zone.js` defines the zones to be displayed in the board.
+- `Explosion.js` is used to create explosion when a mine explode.
+- `Timer.js` is for the timer used in the game.
