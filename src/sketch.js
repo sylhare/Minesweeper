@@ -1,4 +1,15 @@
 var board;
+var win = {
+    name: "win",
+    text: "Congratulation, <br> you beat the game!",
+    img: "../img/flag.svg"
+}
+var lose = {
+    name: "lose",
+    text: "BOOOM !! <br> you exploded!",
+    img: "../img/mine.svg"
+}
+
 
 function setup() {
     /* Setup the minesweeper game */
@@ -30,6 +41,19 @@ function addListener(canvas, event) {
         evt.preventDefault();
         board.update(pos.x, pos.y, evt.type, canvas);
     });
+}
+
+function addCustomAlert(type) {
+    /* Add a custom alert with a text as the message and type win or lose */
+    document.getElementById("alertContainer").style.visibility = "visible";
+    document.getElementById("customAlert-content").innerHTML = type.text;
+    document.getElementById("alert-img").src = type.img;
+}
+
+function removeCustomAlert() {
+    /* Remove the custom alert */
+    document.getElementById("alertContainer").style.visibility = "hidden";
+    document.getElementById("customAlert-title").classList.remove(document.getElementById("customAlert-title").classList.item[0]);
 }
 
 function addExplodeListener(canvas) {
@@ -107,6 +131,5 @@ window.onload = function () {
     setTimer("timer");
 
     setup(canvas);
-    addTextNode("game_info", board.mineNumber);
     draw(canvas);
 };

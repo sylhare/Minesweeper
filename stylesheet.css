@@ -3,37 +3,29 @@
     margin: 0;
     position: relative;
 }
-
-h1 {
+.game-title {
     font-family: "Calibri";
     text-align: center;
     color: #FAFCFC;
     background-color: #505A5C;
     box-shadow: 0 5px #005A5C;
 }
-
 canvas,
 #board {
     font-family: "Calibri";
     border: 5px solid grey;
 }
-
 #container {
-    text-align: center;
     margin-top: 5px;
     width: 100%;
     float: left;
-    min-width: 550px;
 }
-
 #game,
 #right,
 #left {
     display: inline-block;
     vertical-align: top;
 }
-
-
 #info {
     float: right;
     font-family: "Roboto", sans-serif;
@@ -42,15 +34,87 @@ canvas,
     margin-right: 5px;
     height: auto;
 }
-
-#game_info {
+#game-info {
     margin: 3px;
     height: 25px;
 }
-
-#mine_img {
+#mine-img {
     float: right;
     vertical-align: middle;
     width: 25px;
     height: 25px;
+}
+#alertContainer {
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 10000;
+}
+.center {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+.win {
+    background-color: #ff9800;
+}
+.lose {
+    background-color: #326061;
+}
+#alertBox {
+    width: 350px;
+    height: 250px;
+    background-color: #fff;
+    border-radius: 7px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.6);;
+}
+.alertBox-img {
+    width: 100px;
+    height: 100px;
+    border: 0;
+    margin-top: 15px;
+    padding-left: 125px;
+}
+#alertBox h1 {
+    text-align: left;
+    margin: 0;
+    font: bold 1.2em "Trebuchet MS", Helvetica, sans-serif;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    height: 15%;
+    color: #FFF;
+    padding: 2px 0 2px 5px;
+}
+#alertBox p {
+    text-align: center;
+    font: bold 1.2em "Trebuchet MS", Helvetica, sans-serif;
+    height: 30px;
+    margin-top: 20px;
+    margin-bottom: 35px;
+}
+#alertBox #closeBtn {
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2%;
+    border: 0 none;
+    width: 20%;
+    font: bold 1em "Trebuchet MS", Helvetica, sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    color: #FFF;
+    background-color: #97DBDB;
+    border-radius: 3px;
+    text-decoration: none;
+}
+#closeBtn:hover {
+    -webkit-filter: brightness(90%);
 }
