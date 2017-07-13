@@ -47,9 +47,9 @@ function Board(map, mineNumber) {
             8  - column
 
              -- zoneSize
-             __           __   __
-            |  | Padding |  | |  |
-             --           --   --
+             __                 __   __
+            |  | <- Padding -> |  | |  |
+             --                 --   --
     */
 
     this.column = Math.round(Math.sqrt(map)) || Math.floor((autoSize(map.width)));
@@ -62,6 +62,7 @@ function Board(map, mineNumber) {
     this.zones = [];
     this.mines = [];
     this.values = Array.apply(null, new Array(this.boardSize)).map(Number.prototype.valueOf, 0);
+    this.status;
 
     this.autoFit = function (n) {
         /* Try to reduce the amount of unused space in an inconvenient Canvas */
@@ -83,44 +84,12 @@ function Board(map, mineNumber) {
         }
     };
 
-    this.setMines = function () {
-        /* Create the mines array */
-
-        while (this.mines.length < this.mineNumber) {
-            var n = Math.ceil(Math.random() * (this.boardSize - 1));
-
-            if (!this.hasMine(n)) {
-                this.mines.push(n);
-            }
-        }
-
-        // Have the mines in the right order (not mandatory)
-        this.mines.sort(function (a, b) {
-            return a - b;
-        });
-    };
-
     this.hasMine = function (n) {
         /* Check if an integer n is a zone where there's a mine */
         if (this.mines.indexOf(n) > -1) {
             return true;
         } else {
             return false;
-        }
-    };
-
-    this.setValues = function () {
-        /* Generates this.values[] which stores the number that says how many mines are around */
-        var z, coord, i, j;
-
-        for (i = 0; i <= this.mines.length; i++) {
-            //Increment the value for all surrounding zones
-            coord = this.neighbour(this.mines[i]);
-
-            for (j = 0; j < coord.length; j++) {
-                this.values[coord[j]] += 1;
-            }
-
         }
     };
 
@@ -159,6 +128,54 @@ function Board(map, mineNumber) {
             return z - 1;
         }
     }
+
+    this.neighbour = function (z) {
+        /* Return an array with all available surrounding zones of the *z* input one */
+        var coord = [this.north(z),
+                    this.north(this.east(z)),
+                    this.north(this.west(z)),
+                    this.south(z),
+                    this.south(this.east(z)),
+                    this.south(this.west(z)),
+                    this.east(z),
+                    this.west(z)];
+
+        // Coord with this.boardsize as value are not available and are removed
+        return removeFromArray(this.boardSize, coord);
+
+    }
+
+    this.setMines = function () {
+        /* Create the mines array */
+
+        while (this.mines.length < this.mineNumber) {
+            var n = Math.ceil(Math.random() * (this.boardSize - 1));
+
+            if (!this.hasMine(n)) {
+                this.mines.push(n);
+            }
+        }
+
+        // Have the mines in the right order (not mandatory)
+        this.mines.sort(function (a, b) {
+            return a - b;
+        });
+    };
+
+    this.setValues = function () {
+        /* Generates this.values[] which stores the number that says how many mines are around */
+        var z, coord, i, j;
+
+        for (i = 0; i <= this.mines.length; i++) {
+            //Increment the value for all surrounding zones
+            coord = this.neighbour(this.mines[i]);
+
+            for (j = 0; j < coord.length; j++) {
+                this.values[coord[j]] += 1;
+            }
+
+        }
+    };
 
     this.addZone = function () {
         /* Create a zone and add it to the board */
@@ -214,25 +231,6 @@ function Board(map, mineNumber) {
         }
     }
 
-    this.gameOver = function () {
-        /* Unveil all the mines of the board */
-
-        for (var i = 0; i < this.mines.length; i++) {
-            this.zones[this.mines[i]].unveil();
-        }
-        this.explode(this.zones[z], canvas);
-
-        return false;
-    }
-
-    this.win = function () {
-        if (this.mineNumber === this.numberNotUnveiled) {
-            return true;
-        } else {
-            return null;
-        }
-    }
-
     this.explode = function (zone, canvas) {
         /* Dispatch custom event "explode" */
         var explode = new CustomEvent("explode", {
@@ -243,25 +241,34 @@ function Board(map, mineNumber) {
         });
         canvas.dispatchEvent(explode);
     }
-
-    this.expand = function (z) {
-        var j, results;
-
-        if (!this.zones[z].value) {
-            results = this.neighbour(z);
-
-            for (j = 0; j < results.length; j++) {
-                if (!this.zones[results[j]].isUnveiled) {
-                    return results[j];
-                }
-
-            }
-        }
-
-        return null;
+    
+    this.alertStatus = function (canvas, type) {
+        var status = new CustomEvent(type);
+        canvas.dispatchEvent(status);
     }
 
+
+    this.gameOver = function (z, canvas) {
+        /* Unveil all the mines of the board */
+
+        for (var i = 0; i < this.mines.length; i++) {
+            this.zones[this.mines[i]].unveil();
+        }
+
+        this.explode(this.zones[z], canvas);
+        this.alertStatus(canvas, "lose");
+    }
+
+    this.checkWin = function (canvas) {
+        if (this.mineNumber === this.numberNotUnveiled) {
+            this.alertStatus(canvas, "win");
+        } 
+    }
+
+
+
     this.unveil = function (z) {
+        /* A zone can be unveiled if there's no flag, and it's not already unveiled */
         if (!this.zones[z].flag && !this.zones[z].isUnveiled) {
             this.zones[z].unveil();
             this.numberNotUnveiled--;
@@ -271,50 +278,37 @@ function Board(map, mineNumber) {
         }
     }
 
-
-    this.clicked = function (z, canvas) {
-        /* Define how the board reacts when it's clicked */
+    this.expand = function (z) {
         var coord, j;
 
-        //The clicked zone is not flagged or already unveiled
+        //Unveil the zone, if it fits the requirement, we continue with the possible neighbours
         if (this.unveil(z)) {
             if (!this.zones[z].value) {
                 coord = this.neighbour(z);
 
                 for (j = 0; j < coord.length; j++) {
                     if (!this.zones[coord[j]].isUnveiled) {
-                        this.clicked(coord[j]);
+                        this.expand(coord[j]);
                     }
 
                 }
-            } else if (this.zones[z].hasMine()) {
-                this.gameOver();
             }
-        } //*/
+        }
+
     }
 
+    this.clicked = function (z, canvas) {
+        /* Define how the board reacts when it's clicked */
+        
+        this.expand(z);
 
-    this.neighbour = function (z) {
-        /* Return an array with all available surrounding zones of the *z* input one */
-        var coord = [this.north(z),
-                    this.north(this.east(z)),
-                    this.north(this.west(z)),
-                    this.south(z),
-                    this.south(this.east(z)),
-                    this.south(this.west(z)),
-                    this.east(z),
-                    this.west(z)];
-        /*
-        for (var i = 0; i < coord.length; i++) {
-            // Coord with this.boardsize as value are not available and are removed
-            if (coord[i] === this.boardSize) {
-                coord.splice(i, 1);
-                i--;
-            }
-        }*/
-
-        return removeFromArray(this.boardSize, coord);
-
+        if (this.zones[z].hasMine()) {
+            this.gameOver(z, canvas);
+        } else {
+            this.checkWin(canvas);
+            
+        }
+        //*/
     }
 
     this.draw = function (canvas) {

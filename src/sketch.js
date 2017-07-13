@@ -72,6 +72,20 @@ function addExplodeListener(canvas) {
     }, false);
 }
 
+function addCustomAlertListener(canvas) {
+    canvas.addEventListener("win", function (evt) {
+        addCustomAlert(win);
+    }, false);
+
+    canvas.addEventListener("lose", function (evt) {
+        setTimeout(function () {
+            addCustomAlert(lose);
+        }, 500);
+
+    }, false);
+
+}
+
 function setTimer(id) {
     /* Set the timer and update the html with the specified id */
     var timer = new Timer();
@@ -128,6 +142,7 @@ window.onload = function () {
     addListener(canvas, "click");
     addListener(canvas, "contextmenu");
     addExplodeListener(canvas);
+    addCustomAlertListener(canvas);
     setTimer("timer");
 
     setup(canvas);
