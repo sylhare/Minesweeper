@@ -1,27 +1,100 @@
 var board;
 var win = {
     name: "win",
-    text: "Congratulation, <br> you beat the game!",
+    text: ["Congratulation!", "br", "you beat the game!"],
     img: "../img/flag.svg"
-}
+};
 var lose = {
     name: "lose",
-    text: "BOOOM !! <br> you exploded!",
+    text: ["BOOOM !!", "br", "you've exploded!"],
     img: "../img/mine.svg"
+};
+
+/*
+------------------------------------------------------------------
+
+                        DOM Modifications
+
+------------------------------------------------------------------
+*/
+
+function createCanvas(body, id, width, height) {
+    /* Create a canvas and but it in "body" can be any tagnamed element, id, width and height of teh canvas can be configured */
+    var canvas = document.createElement("canvas");
+
+    canvas.id = id || "board";
+    canvas.width = width || 258;
+    canvas.height = height || 258;
+    //canvas.oncontextmenu = "javascript:return false;";
+
+    body.appendChild(canvas);
+
+    return document.getElementById(canvas.id);
+}
+
+function updateTextNode(id, text) {
+    /* Update text node of the defined id with text */
+    var node = document.getElementById(id);
+    node.textContent = text || "error"; //Firefox
+    node.innerText = text || "error"; //IE
+}
+
+function addTextNode(parentId, text, id) {
+    /* Add a text node under a parentId with a defined id in the HTML */
+    var element = document.createElement("span");
+    var p = text || "error";
+    var node = document.createTextNode(p);
+    var parent = document.getElementById(parentId);
+
+    element.appendChild(node);
+    element.id = id || "info";
+    element.classList.add("info");
+
+    parent.appendChild(element);
+    //parent.insertBefore(element, parent.childNodes[0]);
+}
+
+function removeChildren(parent) {
+    /* Remove all children from the id node */
+    var parent = document.getElementById(parent) || parent;
+
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
+function addCustomAlert(type) {
+    /* Add a custom alert with a text as the message and type win or lose */
+    var text, content = document.getElementById("customAlert-content");
+
+    removeChildren(content);
+
+    for (var i = 0; i < type.text.length; i++) {
+        text = type.text[i];
+        if (text === "br") {
+            content.appendChild(document.createElement('br'));
+        } else {
+            content.appendChild(document.createTextNode(text));
+        }
+    }
+    document.getElementById("alertContainer").style.visibility = "visible";
+    document.getElementById("alert-img").src = type.img;
+
+}
+
+function removeCustomAlert() {
+    /* Remove the custom alert */
+    document.getElementById("alertContainer").style.visibility = "hidden";
 }
 
 
-function setup() {
-    /* Setup the minesweeper game */
-    board = new Board(64);
-    //board = new Board(canvas);
-}
+/*
+------------------------------------------------------------------
 
-function draw(canvas) {
-    /* Draw the canvas */
-    board.draw(canvas);
+                        Listeners
 
-}
+------------------------------------------------------------------
+*/
 
 function getMousePos(canvas, evt) {
     /* Return the position of the mouse within the canvas */
@@ -32,7 +105,6 @@ function getMousePos(canvas, evt) {
     };
 }
 
-
 function addListener(canvas, event) {
     /* Creates the listener to the vent in the canvas */
 
@@ -41,19 +113,6 @@ function addListener(canvas, event) {
         evt.preventDefault();
         board.update(pos.x, pos.y, evt.type, canvas);
     });
-}
-
-function addCustomAlert(type) {
-    /* Add a custom alert with a text as the message and type win or lose */
-    document.getElementById("alertContainer").style.visibility = "visible";
-    document.getElementById("customAlert-content").innerHTML = type.text;
-    document.getElementById("alert-img").src = type.img;
-}
-
-function removeCustomAlert() {
-    /* Remove the custom alert */
-    document.getElementById("alertContainer").style.visibility = "hidden";
-    document.getElementById("customAlert-title").classList.remove(document.getElementById("customAlert-title").classList.item[0]);
 }
 
 function addExplodeListener(canvas) {
@@ -86,6 +145,28 @@ function addCustomAlertListener(canvas) {
 
 }
 
+
+/*
+------------------------------------------------------------------
+
+                        Game start up
+
+------------------------------------------------------------------
+*/
+
+function setup() {
+    /* Setup the minesweeper game */
+    board = new Board(64);
+    //board = new Board(canvas);
+    addTextNode("game-info", board.mineNumber, "mines");
+}
+
+function draw(canvas) {
+    /* Draw the canvas */
+    board.draw(canvas);
+
+}
+
 function setTimer(id) {
     /* Set the timer and update the html with the specified id */
     var timer = new Timer();
@@ -93,41 +174,6 @@ function setTimer(id) {
     setInterval(function () {
         updateTextNode(id, timer.counter);
     }, 1000);
-}
-
-function createCanvas(body, id, width, height) {
-    /* Create a canvas and but it in "body" can be any tagnamed element, id, width and height of teh canvas can be configured */
-    var canvas = document.createElement("canvas");
-
-    canvas.id = id || "board";
-    canvas.width = width || 258;
-    canvas.height = height || 258;
-    //canvas.oncontextmenu = "javascript:return false;";
-
-    body.appendChild(canvas);
-
-    return document.getElementById(canvas.id);
-}
-
-function updateTextNode(id, text) {
-    /* Update text node of the defined id with text */
-    var node = document.getElementById(id);
-    node.innerHTML = text || "error";
-}
-
-function addTextNode(parentId, text, id) {
-    /* Add a text node under a parentId with a defined id in the HTML */
-    var element = document.createElement("span");
-    var p = text || "error";
-    var node = document.createTextNode(p);
-    var parent = document.getElementById(parentId);
-
-    element.appendChild(node);
-    element.id = id || "info";
-
-    parent.appendChild(element);
-    //parent.insertBefore(element, parent.childNodes[0]);
-
 }
 
 window.onload = function () {

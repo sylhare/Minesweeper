@@ -100,7 +100,7 @@ function Board(map, mineNumber) {
         } else {
             return z - this.column;
         }
-    }
+    };
 
     this.south = function (z) {
         /* Return the zone south to the "z" one unless we're at the bottom row */
@@ -109,7 +109,7 @@ function Board(map, mineNumber) {
         } else {
             return z + this.column;
         }
-    }
+    };
 
     this.east = function (z) {
         /* Return the zone east to the "z" one unless we're at the eastern row */
@@ -118,7 +118,7 @@ function Board(map, mineNumber) {
         } else {
             return z + 1;
         }
-    }
+    };
 
     this.west = function (z) {
         /* Return the zone west to the "z" one unless we're at the western row */
@@ -127,7 +127,7 @@ function Board(map, mineNumber) {
         } else {
             return z - 1;
         }
-    }
+    };
 
     this.neighbour = function (z) {
         /* Return an array with all available surrounding zones of the *z* input one */
@@ -143,7 +143,7 @@ function Board(map, mineNumber) {
         // Coord with this.boardsize as value are not available and are removed
         return removeFromArray(this.boardSize, coord);
 
-    }
+    };
 
     this.setMines = function () {
         /* Create the mines array */
@@ -190,7 +190,7 @@ function Board(map, mineNumber) {
         }
 
         this.zones.push(new Zone(x, y, mine, this.zoneSize, value));
-    }
+    };
 
 
     this.setZone = function () {
@@ -207,7 +207,7 @@ function Board(map, mineNumber) {
             this.addZone();
         }
 
-    }
+    };
 
     this.update = function (x, y, evt, canvas) {
         /* Action to perform based on event received and the coordinates of the mouse */
@@ -229,7 +229,7 @@ function Board(map, mineNumber) {
             }
             this.draw(canvas);
         }
-    }
+    };
 
     this.explode = function (zone, canvas) {
         /* Dispatch custom event "explode" */
@@ -240,12 +240,12 @@ function Board(map, mineNumber) {
             }
         });
         canvas.dispatchEvent(explode);
-    }
+    };
     
     this.alertStatus = function (canvas, type) {
         var status = new CustomEvent(type);
         canvas.dispatchEvent(status);
-    }
+    };
 
 
     this.gameOver = function (z, canvas) {
@@ -257,13 +257,13 @@ function Board(map, mineNumber) {
 
         this.explode(this.zones[z], canvas);
         this.alertStatus(canvas, "lose");
-    }
+    };
 
     this.checkWin = function (canvas) {
         if (this.mineNumber === this.numberNotUnveiled) {
             this.alertStatus(canvas, "win");
         } 
-    }
+    };
 
 
 
@@ -276,7 +276,7 @@ function Board(map, mineNumber) {
         } else {
             return false;
         }
-    }
+    };
 
     this.expand = function (z) {
         var coord, j;
@@ -294,8 +294,7 @@ function Board(map, mineNumber) {
                 }
             }
         }
-
-    }
+    };
 
     this.clicked = function (z, canvas) {
         /* Define how the board reacts when it's clicked */
@@ -309,7 +308,7 @@ function Board(map, mineNumber) {
             
         }
         //*/
-    }
+    };
 
     this.draw = function (canvas) {
         /* Drawing the state of the board */
@@ -323,7 +322,7 @@ function Board(map, mineNumber) {
         for (var i = 0; i < this.zones.length; i++) {
             this.zones[i].draw(canvas);
         }
-    }
+    };
 
     this.getZone = function (x, y) {
         /* Give the zone number of a given position (x, y) */
@@ -337,7 +336,7 @@ function Board(map, mineNumber) {
         }
 
         return zone;
-    }
+    };
 
     //So that the board is initialised when created
     if (!Number.isInteger(map)) {

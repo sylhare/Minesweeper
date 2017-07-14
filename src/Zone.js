@@ -72,7 +72,7 @@ function Zone(x, y, mine, size, value) {
         } else {
             return false;
         }
-    }
+    };
 
     this.unveil = function () {
         /* Returns different scenario when the zone is unveiled*/
@@ -89,7 +89,7 @@ function Zone(x, y, mine, size, value) {
             this.flag = false;
         }
 
-    }
+    };
 
 
     this.draw = function (canvas) {
@@ -124,7 +124,7 @@ function Zone(x, y, mine, size, value) {
 
         ctx.closePath();
 
-    }
+    };
 
 }
 
