@@ -2,12 +2,12 @@ var board;
 var win = {
     name: "win",
     text: ["Congratulation!", "br", "you beat the game!"],
-    img: "../img/flag.svg"
+    img: "../img/trophy.svg"
 };
 var lose = {
     name: "lose",
     text: ["BOOOM !!", "br", "you've exploded!"],
-    img: "../img/mine.svg"
+    img: "../img/skull.svg"
 };
 
 /*
@@ -56,10 +56,10 @@ function addTextNode(parentId, text, id) {
 
 function removeChildren(parent) {
     /* Remove all children from the id node */
-    var parent = document.getElementById(parent) || parent;
+    var p = document.getElementById(parent) || parent;
 
-    while (parent.firstChild) {
-        parent.removeChild(parent.firstChild);
+    while (p.firstChild) {
+        p.removeChild(p.firstChild);
     }
 }
 
@@ -72,7 +72,7 @@ function addCustomAlert(type) {
     for (var i = 0; i < type.text.length; i++) {
         text = type.text[i];
         if (text === "br") {
-            content.appendChild(document.createElement('br'));
+            content.appendChild(document.createElement(text));
         } else {
             content.appendChild(document.createTextNode(text));
         }
@@ -132,11 +132,11 @@ function addExplodeListener(canvas) {
 }
 
 function addCustomAlertListener(canvas) {
-    canvas.addEventListener("win", function (evt) {
+    canvas.addEventListener(win.name, function (evt) {
         addCustomAlert(win);
     }, false);
 
-    canvas.addEventListener("lose", function (evt) {
+    canvas.addEventListener(lose.name, function (evt) {
         setTimeout(function () {
             addCustomAlert(lose);
         }, 500);
