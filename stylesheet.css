@@ -1,49 +1,80 @@
-* {
+canvas,
+#board {
+    font-family: "Calibri";
+    border: 5px solid grey;
+}
+
+#container {
+    margin-top: 5px;
+    width: 100%;
+    float: left;
+}
+
+#game,
+.right,
+.left {
+    display: inline-block;
+    vertical-align: top;
+}
+.left {
+    float: left;
+}
+
+#game-info {
+    margin-top: 20px;
+    height: 25px;
+}
+#mine-img {
+    float: right;
+    margin-right: 25%;
+    width: 25px;
+    height: 25px;
+}
+
+#game-info:hover {
+    opacity: 0.8;
+}
+
+.timer {
+    font: 1em "Roboto", Helvetica, sans-serif;
+    color: #226A5C;    
+    margin: 20px;
+    opacity: 0.9;
+}
+
+.timer p{
+    margin-bottom: 5px;
+    margin-left: -2px;
+    font-weight: bold;
+    font-size: 110%;
+    opacity: 1;
+}
+.timer timer:hover{
+    color: #0099FF;
+    
+}
+.game-title {
+    left: 0px;
+    top: 0px;
     padding: 0;
     margin: 0;
     position: relative;
-}
-.game-title {
     font-family: "Calibri";
     text-align: center;
     color: #FAFCFC;
     background-color: #505A5C;
     box-shadow: 0 5px #005A5C;
 }
-canvas,
-#board {
-    font-family: "Calibri";
-    border: 5px solid grey;
-}
-#container {
-    margin-top: 5px;
-    width: 100%;
-    float: left;
-}
-#game,
-#right,
-#left {
-    display: inline-block;
-    vertical-align: top;
-}
+
 .info {
     float: right;
-    font-family: "Roboto", sans-serif;
+    font-family: "Roboto", Helvetica, sans-serif;
     font-style: normal;
     font-size: 20px;
     margin-right: 5px;
     height: auto;
 }
-#game-info {
-    margin: 3px;
-    height: 25px;
-}
-#mine-img {
-    float: right;
-    vertical-align: middle;
-    width: 25px;
-    height: 25px;
-}
+
 #alertContainer {
     visibility: hidden;
     background-color: rgba(0, 0, 0, 0.3);
@@ -62,12 +93,7 @@ canvas,
     left: 0;
     margin: auto;
 }
-.win {
-    background-color: #ff9800;
-}
-.lose {
-    background-color: #326061;
-}
+
 #alertBox {
     width: 350px;
     height: 250px;

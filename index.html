@@ -25,32 +25,32 @@
 
     <!-- Minesweeper game  -->
     <div id="container">
-        <!-- Right Panel -->
-        <div id="left">
-            <timer id=timer>00:00</timer>
+        <!-- Left Panel -->
+        <div class="left">
+            <div id="game-info">
+                <img id="mine-img" src="img/mine.svg">
+            </div>
+            <div class="timer">
+                <p>Time:</p>
+                <timer id="timer">00:00</timer>
+            </div>
         </div>
 
         <!-- Custom Alert -->
         <div id="alertContainer">
             <div id="alertBox" class="center">
                 <!--<h1 id="customAlert-title" class="">Alert</h1>-->
-                 <img id="alert-img" src="" alt="W3Schools.com" class="alertBox-img"> 
+                <img id="alert-img" src="" alt="W3Schools.com" class="alertBox-img">
                 <p id="customAlert-content">message</p>
                 <a id="closeBtn" href="#" onclick="removeCustomAlert()">Ok</a>
             </div>
         </div>
 
         <!-- Middle Panel (game canvas) -->
-        <div id="game">
-            <div id="game-info">
-                <img id="mine-img" src="img/mine.svg">
-            </div>
-        </div>
+        <div id="game"></div>
 
-        <!-- Left Panel -->
-        <div id="right">
-            <p> </p>
-        </div>
+        <!-- Right Panel -->
+        <div class="right"></div>
 
     </div>
 
