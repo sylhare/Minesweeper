@@ -62,7 +62,7 @@ function Board(map, mineNumber) {
     this.zones = [];
     this.mines = [];
     this.values = Array.apply(null, new Array(this.boardSize)).map(Number.prototype.valueOf, 0);
-    this.status;
+    this.status = ""; // "win" or "lose" the status of the Minesweeper
 
     this.autoFit = function (n) {
         /* Try to reduce the amount of unused space in an inconvenient Canvas */
