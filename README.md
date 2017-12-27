@@ -13,15 +13,15 @@
 
 Here is a quick guide on how to play the game:
 
-- Right click on a gray square to unveil it.
+- `Right click` on a gray square to unveil it.
 - The number on the unveiled square reveals the number of mine directly arounf
-- Left click on a gray square to flag it (a red flag will appear).
+- `Left click` on a gray square to flag it (a red flag will appear).
 - The goal is to unveil all of the case that does not contain any mines and flag all of the squares that containes a mine.
 - the number of mines is at the top of the canvas.
 
 ### Updates to come
 
-Here are some stuff that I might add, I have scheduled them for the next version.
+Here are the features with the functionalities per version and the one to come.
 
 #### Version v1.0 -> [Released !!](https://github.com/Sylhare/Minesweeper/releases/tag/v1.0) 
 
@@ -33,7 +33,7 @@ Here are some stuff that I might add, I have scheduled them for the next version
 - [X] Uncover all mines when one is clicked
 
 
-#### Version v2.0 
+#### Version v2.0 -> [Released !!](https://github.com/Sylhare/Minesweeper/releases/tag/v2.0)
 
 - [X] A Counter for the time
 - [X] Display the amount of mine to find in the game
