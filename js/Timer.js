@@ -1,6 +1,6 @@
 function Timer() {
     /* Create a timer to count the elapsed time in minutes, seconds*/
-    var timer, time, counter, stopTime;
+    var timer, time, counter;
 
     this.count = function () {
         /* Update the counter value when called */
@@ -28,17 +28,9 @@ function Timer() {
             self.count();
         }, 1000);
     };
-
-    this.stop = function () {
-        /* Save the stopped time */
-        this.stopTime = new Date();
+    
+    this.stop = function() {
         clearInterval(this.timer);
     }
-
-    this.restart = function () {
-        /* Adjust the time value after it has been stopped to reflect the correct value in the counter */
-        var now = new Date();
-        this.time.getTime() += now.getTime() - this.stopTime.getTimer();
-        this.start(this.time);
-    }
 }
+

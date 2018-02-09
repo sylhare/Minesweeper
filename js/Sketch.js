@@ -1,13 +1,14 @@
 var board;
+var timer = new Timer();
 var win = {
     name: "win",
-    text: ["Congratulation!", "br", "you beat the game!"],
-    //img: "../img/trophy.svg" //if on a local server
+    //img: "../img/trophy.svg" // uncomment if on a local server 
+    text: ["Congratulation!", "br", "you beat the game!"]
 };
 var lose = {
     name: "lose",
-    text: ["BOOOM !!", "br", "you've exploded!"],
-    //img: "../img/skull.svg" //if on a local server
+    //img: "../img/skull.svg", //if on a local server
+    text: ["BOOOM !!", "br", "you've exploded!"]
 };
 
 /*
@@ -67,6 +68,7 @@ function addCustomAlert(type) {
     /* Add a custom alert with a text as the message and type win or lose */
     var text, content = document.getElementById("customAlert-content");
 
+    timer.stop();
     removeChildren(content);
 
     for (var i = 0; i < type.text.length; i++) {
@@ -79,12 +81,13 @@ function addCustomAlert(type) {
     }
     document.getElementById("alertContainer").style.visibility = "visible";
     document.getElementById("alert-img").src = type.img;
-
 }
 
 function removeCustomAlert() {
     /* Remove the custom alert */
     document.getElementById("alertContainer").style.visibility = "hidden";
+    timer.counter = "00:00";
+    setup(document.getElementById("board")); // restart the game, /!\ "board" is default value  
 }
 
 
@@ -106,11 +109,11 @@ function getMousePos(canvas, evt) {
 }
 
 function addListener(canvas, event) {
-    /* Creates the listener to the vent in the canvas */
+    /* Creates the listener to catch events in the canvas */
 
     canvas.addEventListener(event, function (evt) {
         var pos = getMousePos(canvas, evt);
-        evt.preventDefault();
+        evt.preventDefault(); // Prevent the link from updating the URL
         board.update(pos.x, pos.y, evt.type, canvas);
     });
 }
@@ -154,26 +157,21 @@ function addCustomAlertListener(canvas) {
 ------------------------------------------------------------------
 */
 
-function setup() {
-    /* Setup the minesweeper game */
-    board = new Board(64);
-    //board = new Board(canvas);
-    addTextNode("game-info", board.mineNumber, "mines");
-}
-
-function draw(canvas) {
-    /* Draw the canvas */
-    board.draw(canvas);
-
-}
-
 function setTimer(id) {
     /* Set the timer and update the html with the specified id */
-    var timer = new Timer();
-    timer.start();
     setInterval(function () {
         updateTextNode(id, timer.counter);
+        console.log(timer.counter);
     }, 1000);
+}
+
+function setup(canvas) {
+    /* Setup the minesweeper game */
+    timer.start();
+    board = new Board(64);
+    // nboard = new Board(canvas);
+    updateTextNode("mines", board.mineNumber);
+    board.draw(canvas);
 }
 
 window.onload = function () {
@@ -189,10 +187,10 @@ window.onload = function () {
     addListener(canvas, "contextmenu");
     addExplodeListener(canvas);
     addCustomAlertListener(canvas);
+    
+    addTextNode("game-info", 0, "mines");
+    setup(canvas); 
     setTimer("timer");
-
-    setup(canvas);
-    draw(canvas);
 };
 
 

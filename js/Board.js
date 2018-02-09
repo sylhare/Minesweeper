@@ -265,8 +265,6 @@ function Board(map, mineNumber) {
         } 
     };
 
-
-
     this.unveil = function (z) {
         /* A zone can be unveiled if there's no flag, and it's not already unveiled */
         if (!this.zones[z].flag && !this.zones[z].isUnveiled) {
