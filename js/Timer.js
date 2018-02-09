@@ -1,6 +1,5 @@
 function Timer() {
-    /* Create a timer to count the elapsed time in minutes, seconds*/
-    var timer, time, counter;
+    /* Create a timer to count the elapsed time in minutes, seconds */
 
     this.count = function () {
         /* Update the counter value when called */
@@ -12,13 +11,13 @@ function Timer() {
 
         this.counter = minutes + ":" + seconds;
 
-        if (seconds == 60) {
+        if (seconds === 60) {
             minutes += 1;
             this.counter = ("0" + minutes).slice(-2) + ":00";
         } else {
             this.counter = ("0" + minutes).slice(-2) + ":" + ("0" + seconds).slice(-2);
         }
-    }
+    };
 
     this.start = function (startTime) {
         /* Set the timer start time and start counting */
