@@ -24,48 +24,50 @@
 
     <div id="page">
         <div id="logo">
-            <h1 class="game-title">Minesweeper</h1>
+            <h1 class="title">Minesweeper</h1>
         </div>
 
+        <!-- Left Panel -->
         <div id="nav">
+            <div class="left">
+                <div id="game-info">
+                    <img id="mine-img" alt="mine" src="img/mine.svg">
+                    <!-- <span id="mines" class="info">8</span> -->
+                </div>
+
+                <div class="timer">
+                    <p>Time</p>
+                    <timer id="timer">00:00</timer>
+                </div>
+            </div>
+
             <ul>
-                <li><a href="#/Game.html">Game</a></li>
-                <li><a href="#/Settings.html">Settings</a></li>
-                <li><a href="#/Credits.html">Credit</a></li>
+                <li><a class="button" href="#/">Game</a></li>
+                <li><a class="button" href="#/Settings.html">Settings</a></li>
+                <li><a class="button" href="#/Credits.html">Credit</a></li>
             </ul>
         </div>
 
+        <div class="clearfix"></div>
 
-    <!-- Minesweeper game  -->
-    <div id="container">
-        <!-- Left Panel -->
-        <div class="left">
-            <div id="game-info">
-                <img id="mine-img" src="img/mine.svg">
+        <!-- Minesweeper game  -->
+        <div id="container">
+
+
+            <!-- Custom Alert -->
+            <div id="alertContainer">
+                <div id="alertBox" class="center">
+                    <!--<h1 id="customAlert-title" class="">Alert</h1>-->
+                    <img id="alert-img" src="" alt="alert" class="alertBox-img">
+                    <p id="customAlert-content">message</p>
+                    <a class="button" href="#" onclick="removeCustomAlert()">Ok</a>
+                </div>
             </div>
-            <div class="timer">
-                <p>Time:</p>
-                <timer id="timer">00:00</timer>
-            </div>
+
+            <!-- Middle Panel (game canvas) -->
+            <div id="game"></div>
+
         </div>
-
-        <!-- Custom Alert -->
-        <div id="alertContainer">
-            <div id="alertBox" class="center">
-                <!--<h1 id="customAlert-title" class="">Alert</h1>-->
-                <img id="alert-img" src="" alt="W3Schools.com" class="alertBox-img">
-                <p id="customAlert-content">message</p>
-                <a id="closeBtn" href="#" onclick="removeCustomAlert()">Ok</a>
-            </div>
-        </div>
-
-        <!-- Middle Panel (game canvas) -->
-        <div id="game"></div>
-
-        <!-- Right Panel -->
-        <div class="right"></div>
-
-    </div>
         <div id="footer">
             <p>
                 Webpage made by <a href="https://github.com/Sylhare" target="_blank">sylhare</a>

@@ -1,23 +1,125 @@
+/* -- General -- */
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 80%;
+    line-height: 1.2em;
+    width: 100%;
+    margin: 0;
+    background: #eee;
+}
+
+p {
+    line-height: 1em;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: normal;
+    line-height: 1.1em;
+    margin: 0 0 .5em 0;
+}
+
+.center {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+
+/* --  page default -- */
+
+#page {
+    margin: 20px;
+}
+
+#nav {
+    width: 100%;
+    display: inline-block;
+    text-align: right;
+    float: left;
+}
+
+#nav ul {}
+
+#nav ul li {
+    display: inline-block;
+    height: 40px;
+}
+
+#nav ul li a {
+    padding: 20px;
+    background: orange;
+}
+
+#nav ul li a:hover {
+    background-color: #ffb424;
+    box-shadow: 0px 1px 1px #666;
+}
+
+#nav ul li a:active {
+    background-color: #ff8f00;
+}
+
+.title {
+    width: 100%;
+    left: 0;
+    padding: 0;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    display: inline-block;
+    color: grey;
+}
+
+#content {
+    margin: 20px 0;
+    background: white;
+    padding: 20px;
+    clear: both;
+}
+
+#content,
+.button {
+    box-shadow: 0px 1px 1px #999;
+}
+
+#footer {
+    border-bottom: 1px #ccc solid;
+    margin-bottom: 10px;
+}
+
+#footer p {
+    text-align: right;
+    text-transform: uppercase;
+    font-size: 80%;
+    color: grey;
+}
+
+
+/* -- Game layout -- */
+
 canvas,
 #board {
-    font-family: "Calibri", sans-serif;
-    border: 5px solid grey;
+    border: 3px solid grey;
+    display: inline-block;
 }
 
 #container {
     margin-top: 5px;
     margin-bottom: 10px;
     width: 100%;
-    float: left;
+    text-align: center;
 }
 
 .info {
-    float: right;
-    font-family: "Roboto", Helvetica, sans-serif;
+    float: left;
     font-style: normal;
     font-size: 20px;
     margin-right: 5px;
-    height: auto;
+    margin-top: 5px;
 }
 
 #game,
@@ -26,53 +128,59 @@ canvas,
     display: inline-block;
     vertical-align: top;
 }
+
 .left {
+    height: 40px;
+    display: inline-block;
     float: left;
 }
 
 #game-info {
-    margin-top: 20px;
     height: 25px;
-}
-#mine-img {
-    float: right;
-    margin-right: 25%;
-    width: 25px;
-    height: 25px;
+    display: inline-block;
 }
 
 #game-info:hover {
     opacity: 0.8;
 }
 
+#mine-img {
+    display: inline-block;
+    margin-right: 5px;
+    width: 25px;
+    height: 25px;
+}
+
+
+/* -- timer -- */
+
 .timer {
-    font: 1em "Roboto", Helvetica, sans-serif;
-    color: #226A5C;    
-    margin: 20px;
+    display: inline-block;
+    text-align: center;
+    color: #226A5C;
+    margin-left: 5px;
     opacity: 0.9;
 }
 
-.timer p{
+.timer p {
+    margin-top: 0;
     margin-bottom: 5px;
-    margin-left: -2px;
     font-weight: bold;
     font-size: 110%;
     opacity: 1;
 }
-.timer timer:hover{
+
+.timer timer:hover {
     color: #0099FF;
-    
+
 }
-.game-title {
-    width: 100%;
-    left: 0;
-    padding: 0;
-    margin-top: 5px;
-    margin-bottom: 30px;
-    font: 2em "Roboto", Helvetica, sans-serif;
-    display: inline-block;
-    color: grey;
+
+
+.clearfix{
+    clear:both;
 }
+
+/* -- Alert -- */
 
 #alertContainer {
     visibility: hidden;
@@ -84,22 +192,16 @@ canvas,
     left: 0;
     z-index: 10000;
 }
-.center {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-}
 
 #alertBox {
     width: 350px;
     height: 250px;
     background-color: #fff;
     border-radius: 7px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.6);;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    ;
 }
+
 .alertBox-img {
     width: 100px;
     height: 100px;
@@ -107,116 +209,48 @@ canvas,
     margin-top: 15px;
     padding-left: 125px;
 }
+
 #alertBox h1 {
     text-align: left;
     margin: 0;
-    font: bold 1.2em "Trebuchet MS", Helvetica, sans-serif;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
     height: 15%;
-    color: #FFF;
+    color: white;
     padding: 2px 0 2px 5px;
 }
+
 #alertBox p {
     text-align: center;
-    font: bold 1.2em "Trebuchet MS", Helvetica, sans-serif;
     height: 30px;
     margin-top: 20px;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
-#alertBox #closeBtn {
+
+#alertBox .button {
     display: block;
-    position: relative;
     margin-left: auto;
     margin-right: auto;
-    padding: 2%;
-    border: 0 none;
+    padding: 3%;
     width: 20%;
-    font: bold 1em "Trebuchet MS", Helvetica, sans-serif;
     text-transform: uppercase;
-    text-align: center;
-    color: #FFF;
     background-color: #97DBDB;
+}
+
+#alertBox .button:hover {
+    background-color: #9be0e0;
+}
+
+a.button {
+    text-decoration: none;
+}
+
+.button {
     border-radius: 3px;
-    text-decoration: none;
-}
-#closeBtn:hover {
-    -webkit-filter: brightness(90%);
-}
-
-/*
-* multi-line comment
-*/
-p{ line-height: 1em; }
-h1, h2, h3, h4{
-    color: orange;
-    font-weight: normal;
-    line-height: 1.1em;
-    margin: 0 0 .5em 0;
-}
-h1{ font-size: 1.7em; }
-h2{ font-size: 1.5em; }
-a{
-    color: black;
-    text-decoration: none;
-}
-a:hover,
-a:active{ text-decoration: underline; }
-
-/* you can structure your code's white space so that it is as readable for when you come back in the future or for other people to read and edit quickly */
-
-body{
-    font-family: "Roboto", sans-serif;
-    font-size: 80%;
-    line-height: 1.2em;
-    width: 100%;
-    margin: 0;
-    background: #eee;
-}
-
-/* you can put your code all in one line like above */
-#page{ margin: 20px; }
-
-/* but try and be as concise as possible */
-#nav{
-    width: 100%;
-    display: inline-block;
-    text-align: right;
-    float: left;
-}
-#nav ul{}
-#nav ul li{
-    display: inline-block;
-    height: 40px;
-}
-#nav ul li a{
-    padding: 20px;
-    background: orange;
+    text-align: center;
     color: white;
 }
-#nav ul li a:hover{
-    background-color: #ffb424;
+
+.button:hover {
     box-shadow: 0px 1px 1px #666;
 }
-#nav ul li a:active{ background-color: #ff8f00; }
-
-#content{
-    margin: 20px 0;
-    background: white;
-    padding: 20px;
-    clear: both;
-}
-#footer{
-    border-bottom: 1px #ccc solid;
-    margin-bottom: 10px;
-}
-#footer p{
-    text-align: right;
-    text-transform: uppercase;
-    font-size: 80%;
-    color: grey;
-}
-
-/* multiple styles seperated by a , */
-#content,
-ul li a{ box-shadow: 0px 1px 1px #999; }
