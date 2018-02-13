@@ -41,6 +41,7 @@ h1 {
     display: inline-block;
     text-align: right;
     float: left;
+    margin-bottom: 20px;
 }
 
 #nav ul li {
@@ -77,6 +78,7 @@ h1 {
     background: white;
     padding: 20px;
     clear: both;
+    border-radius: 3px;
 }
 
 #content,
@@ -107,7 +109,6 @@ canvas,
 }
 
 #container {
-    margin-top: 5px;
     margin-bottom: 10px;
     width: 100%;
     text-align: center;

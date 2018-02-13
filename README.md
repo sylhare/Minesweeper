@@ -50,17 +50,19 @@ Here are the features with the functionalities per version and the one to come.
 - [ ] A button to start the game and the Timer.
 - [X] Clicking on the end game window button restart the game.
 - [X] The timer freezes at the end of the game.
-- [ ] Page design enhancement
+- [X] Page design enhancement
+- [ ] Possibility to change number of mines in settings
+- [ ] Credits page of the game
 - [ ] Reduce cyclomatic complexity
 - [ ] Clean up of V2 code
 - [ ] Refactoring the project folder's structure
 
 #### For the future versions ?
 
-- [ ] A Selector to choose the board size
+- [ ] A Selector to choose the board size in settings
 - [ ] Make it portable (for phones, or in an App)
-- [ ] Have a saving feature (using cookies?)
-- [ ] Make it into an node package?
+- [ ] Have a saving feature (using cookies)
+- [ ] Make it into an node package
 
 ### More information on the project
 
