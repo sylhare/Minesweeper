@@ -13,11 +13,22 @@ p {
     line-height: 1em;
 }
 
+a {
+    text-decoration: none;
+    color: orange;
+}
+
 h1 {
     font-size: 2.25em;
     font-weight: normal;
     line-height: 1.1em;
     margin: 0 0 .5em 0;
+}
+
+.img {
+    display: inline-block;
+    width: 1.15em;
+    margin-bottom: -3px;
 }
 
 .center {
@@ -56,7 +67,7 @@ h1 {
 
 #nav ul li a:hover {
     background-color: #ffb424;
-    box-shadow: 0px 1px 1px #666;
+    box-shadow: 0 1px 1px #666;
 }
 
 #nav ul li a:active {
@@ -83,7 +94,7 @@ h1 {
 
 #content,
 .button {
-    box-shadow: 0px 1px 1px #999;
+    box-shadow: 0 1px 1px #999;
 }
 
 #footer {
@@ -122,8 +133,8 @@ canvas,
     margin-top: 5px;
 }
 
+/*noinspection CssUnusedSymbol*/
 #game,
-.right,
 .left {
     display: inline-block;
     vertical-align: top;
@@ -149,7 +160,6 @@ canvas,
     display: inline-block;
     margin-right: 5px;
     width: 25px;
-    height: 25px;
 }
 
 
@@ -251,5 +261,5 @@ a.button {
 }
 
 .button:hover {
-    box-shadow: 0px 1px 1px #666;
+    box-shadow: 0 1px 1px #666;
 }
