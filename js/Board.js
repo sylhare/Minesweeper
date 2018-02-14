@@ -235,7 +235,7 @@ function Board(map, mineNumber) {
         });
         canvas.dispatchEvent(explode);
     };
-    
+
     this.alertStatus = function (canvas, type) {
         var status = new CustomEvent(type);
         canvas.dispatchEvent(status);
@@ -256,7 +256,7 @@ function Board(map, mineNumber) {
     this.checkWin = function (canvas) {
         if (this.mineNumber === this.numberNotUnveiled) {
             this.alertStatus(canvas, "win");
-        } 
+        }
     };
 
     this.unveil = function (z) {
@@ -290,14 +290,14 @@ function Board(map, mineNumber) {
 
     this.clicked = function (z, canvas) {
         /* Define how the board reacts when it's clicked */
-        
+
         this.expand(z);
 
         if (this.zones[z].hasMine()) {
             this.gameOver(z, canvas);
         } else {
             this.checkWin(canvas);
-            
+
         }
         //*/
     };

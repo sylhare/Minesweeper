@@ -33,9 +33,9 @@ function randomDirection() {
 
     var angle = random(0, 360) * Math.PI / 180;
     return {
-                x: Math.cos(angle),
-                y: Math.sin(angle)
-            };
+        x: Math.cos(angle),
+        y: Math.sin(angle)
+    };
 
 }
 
