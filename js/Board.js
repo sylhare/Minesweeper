@@ -1,6 +1,5 @@
 var pad = 2; //Value for the padding
 var size = 30; //Value for the size of a zone (a square)
-var background = "#FFF"; //Color of the board background
 
 function autoSize(n) {
     /* Calculate the number of padding and zoneSize that can fit in n, without missing the first padding */
@@ -61,8 +60,7 @@ function Board(map, mineNumber) {
     this.mineNumber = mineNumber || this.column;
     this.zones = [];
     this.mines = [];
-    this.values = Array.apply(null, new Array(this.boardSize)).map(Number.prototype.valueOf, 0);
-    this.status;
+    this.values = Array.apply(null, new Array(this.boardSize)).map(Number.prototype.valueOf, 0); // Array of zeros
 
     this.autoFit = function (n) {
         /* Try to reduce the amount of unused space in an inconvenient Canvas */
@@ -86,11 +84,7 @@ function Board(map, mineNumber) {
 
     this.hasMine = function (n) {
         /* Check if an integer n is a zone where there's a mine */
-        if (this.mines.indexOf(n) > -1) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.mines.indexOf(n) > -1;
     };
 
     this.north = function (z) {
@@ -164,7 +158,7 @@ function Board(map, mineNumber) {
 
     this.setValues = function () {
         /* Generates this.values[] which stores the number that says how many mines are around */
-        var z, coord, i, j;
+        var coord, i, j;
 
         for (i = 0; i <= this.mines.length; i++) {
             //Increment the value for all surrounding zones
@@ -265,8 +259,6 @@ function Board(map, mineNumber) {
         } 
     };
 
-
-
     this.unveil = function (z) {
         /* A zone can be unveiled if there's no flag, and it's not already unveiled */
         if (!this.zones[z].flag && !this.zones[z].isUnveiled) {
@@ -338,7 +330,7 @@ function Board(map, mineNumber) {
         return zone;
     };
 
-    //So that the board is initialised when created
+    // So that the board is initialised when created with inconvenient canvas to fit it
     if (!Number.isInteger(map)) {
         this.autoFit(map);
     }

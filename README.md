@@ -13,15 +13,15 @@
 
 Here is a quick guide on how to play the game:
 
-- Right click on a gray square to unveil it.
-- The number on the unveiled square reveals the number of mine directly arounf
-- Left click on a gray square to flag it (a red flag will appear).
-- The goal is to unveil all of the case that does not contain any mines and flag all of the squares that containes a mine.
+- `Right click` on a gray square to unveil it.
+- The number on the unveiled square reveals the number of mine directly around
+- `Left click` on a gray square to flag it (a red flag will appear).
+- The goal is to unveil all of the case that does not contain any mines and flag all of the squares that contains a mine.
 - the number of mines is at the top of the canvas.
 
 ### Updates to come
 
-Here are some stuff that I might add, I have scheduled them for the next version.
+Here are the features with the functionality per version and the one to come.
 
 #### Version v1.0 -> [Released !!](https://github.com/Sylhare/Minesweeper/releases/tag/v1.0) 
 
@@ -33,7 +33,7 @@ Here are some stuff that I might add, I have scheduled them for the next version
 - [X] Uncover all mines when one is clicked
 
 
-#### Version v2.0 
+#### Version v2.0 -> [Released !!](https://github.com/Sylhare/Minesweeper/releases/tag/v2.0)
 
 - [X] A Counter for the time
 - [X] Display the amount of mine to find in the game
@@ -47,15 +47,22 @@ Here are some stuff that I might add, I have scheduled them for the next version
 
 #### Version v3.0 -> :construction: 
 
-- [ ] A button to start the game (and the Timer)
-- [ ] A button to restart the game (and the Timer)
-- [ ] A Selector to choose the board size
-- [ ] Page design enhancement
-- [ ] Make it portable (for phones, or in an App)
+- [ ] A button to start the game and the Timer.
+- [X] Clicking on the end game window button restart the game.
+- [X] The timer freezes at the end of the game.
+- [X] Page design enhancement
+- [ ] Possibility to change number of mines in settings
+- [X] Information page of the game
 - [ ] Reduce cyclomatic complexity
-- [ ] Have a saving feature (using cookies?)
 - [ ] Clean up of V2 code
 - [ ] Refactoring the project folder's structure
+
+#### For the future versions ?
+
+- [ ] A Selector to choose the board size in settings
+- [ ] Make it portable (for phones, or in an App)
+- [ ] Have a saving feature (using cookies)
+- [ ] Make it into an node package
 
 ### More information on the project
 

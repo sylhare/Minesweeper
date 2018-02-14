@@ -6,6 +6,45 @@ var mineIMG = new Image();
 var flagIMG = new Image();
 //flagIMG.src = "../img/flag.svg"; //if on a local server
 
+function colorSelector(zone, n) {
+    /* Select the color based on the value */
+    var color;
+
+    switch (n) {
+        case 0: // background color of the zone
+            color = zone.getColor();
+            break;
+        case 1: // green
+            color = "#75BF11";
+            break;
+        case 2: // old green
+            color = "#A4C411";
+            break;
+        case 3: // yellow lime
+            color = "#C9BD11";
+            break;
+        case 4: // light orange
+            color = "#CF9311";
+            break;
+        case 5: // orange
+            color = "#D46711";
+            break;
+        case 6: // dark orange
+            color = "#DA3810";
+            break;
+        case 7: // red
+            color = "#DF101A";
+            break;
+        case 8: // purple
+            color = "#E5104E";
+            break;
+        default: // black
+            color = "#202020";
+            break;
+    }
+
+    return color;
+}
 
 function Zone(x, y, mine, size, value) {
     /* zone of a minesweeper board */
@@ -18,47 +57,10 @@ function Zone(x, y, mine, size, value) {
     this.value = value;
     this.isUnveiled = false;
 
-    //Can't be called from outside
-    function colorSelector(n) {
-        /* Select the color based on the value */
-        var color;
-
-        switch (n) {
-            case 0: // background color of the zone
-                color = this.color;
-                break;
-            case 1: // green
-                color = "#75BF11";
-                break;
-            case 2: // old green
-                color = "#A4C411";
-                break;
-            case 3: // yellow lime
-                color = "#C9BD11";
-                break;
-            case 4: // light orange
-                color = "#CF9311";
-                break;
-            case 5: // orange
-                color = "#D46711";
-                break;
-            case 6: // dark orange
-                color = "#DA3810";
-                break;
-            case 7: // red
-                color = "#DF101A";
-                break;
-            case 8: // purple
-                color = "#E5104E";
-                break;
-            default: // black
-                color = "#202020";
-                break;
-        }
-
-        return color;
-    }
-
+    this.getColor = function () {
+        /* Return the color of the zone */
+        return this.color;
+    };
 
     this.hover = function () {
         /* Update the color of the zone when called */
@@ -67,11 +69,7 @@ function Zone(x, y, mine, size, value) {
 
     this.hasMine = function () {
         /* return true if has mine, false otherwise */
-        if (this.mine) {
-            return true;
-        } else {
-            return false;
-        }
+        return !!this.mine;
     };
 
     this.unveil = function () {
@@ -83,14 +81,9 @@ function Zone(x, y, mine, size, value) {
 
     this.switchFlag = function () {
         /* when called change this.flag to the opposite value, switching it on and off */
-        if (!this.flag) {
-            this.flag = true;
-        } else {
-            this.flag = false;
-        }
+        this.flag = !this.flag;
 
     };
-
 
     this.draw = function (canvas) {
         /* allows the zone to print itself in a canvas */
@@ -107,7 +100,7 @@ function Zone(x, y, mine, size, value) {
             //Draw the Text
             ctx.font = String(Math.ceil(this.size - this.size * 0.2)) + "px Arial";
             ctx.textAlign = "left";
-            ctx.fillStyle = colorSelector(this.value);
+            ctx.fillStyle = colorSelector(this, this.value);
             ctx.fillText(this.value, this.x + this.size * 0.25, this.y + this.size * 0.75);
 
             if (this.mine) {
@@ -118,7 +111,6 @@ function Zone(x, y, mine, size, value) {
         } else if (this.flag) {
             //Draw the flag
             ctx.drawImage(flagIMG, this.x + this.size * 0.2, this.y + this.size * 0.1, this.size * 0.60, this.size * 0.7);
-
 
         }
 

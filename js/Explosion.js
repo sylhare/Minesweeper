@@ -32,12 +32,11 @@ function randomDirection() {
     /* Return a vector pointing to a random direction */
 
     var angle = random(0, 360) * Math.PI / 180;
-    var direction = {
-        x: Math.cos(angle),
-        y: Math.sin(angle)
-    };
+    return {
+                x: Math.cos(angle),
+                y: Math.sin(angle)
+            };
 
-    return direction;
 }
 
 function Particle() {

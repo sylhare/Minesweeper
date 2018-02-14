@@ -21,39 +21,59 @@
 </head>
 
 <body>
-    <h1 class="game-title"> Mine Sweeper </h1>
 
-    <!-- Minesweeper game  -->
-    <div id="container">
+    <div id="page">
+        <div id="logo">
+            <h1 class="title">Minesweeper</h1>
+        </div>
+
         <!-- Left Panel -->
-        <div class="left">
-            <div id="game-info">
-                <img id="mine-img" src="img/mine.svg">
+        <div id="nav">
+            <div class="left">
+                <div id="game-info">
+                    <img id="mine-img" alt="mine" src="img/mine.svg">
+                    <!-- <span id="mines" class="info">8</span> -->
+                </div>
+
+                <div class="timer">
+                    <p>Time</p>
+                    <timer id="timer">00:00</timer>
+                </div>
             </div>
-            <div class="timer">
-                <p>Time:</p>
-                <timer id="timer">00:00</timer>
-            </div>
+
+            <ul>
+                <li><a class="button" href="./index.html">Game</a></li>
+                <li><a class="button" href="./pages/settings.html">Settings</a></li>
+                <li><a class="button" href="pages/info.html"> Info </a></li>
+            </ul>
         </div>
 
-        <!-- Custom Alert -->
-        <div id="alertContainer">
-            <div id="alertBox" class="center">
-                <!--<h1 id="customAlert-title" class="">Alert</h1>-->
-                <img id="alert-img" src="" alt="W3Schools.com" class="alertBox-img">
-                <p id="customAlert-content">message</p>
-                <a id="closeBtn" href="#" onclick="removeCustomAlert()">Ok</a>
+        <div class="clearfix"></div>
+
+        <!-- Minesweeper game  -->
+        <div id="container">
+
+
+            <!-- Custom Alert -->
+            <div id="alertContainer">
+                <div id="alertBox" class="center">
+                    <!--<h1 id="customAlert-title" class="">Alert</h1>-->
+                    <img id="alert-img" src="" alt="alert" class="alertBox-img">
+                    <p id="customAlert-content">message</p>
+                    <a class="button" href="#" onclick="removeCustomAlert()">Ok</a>
+                </div>
             </div>
+
+            <!-- Middle Panel (game canvas) -->
+            <div id="game"></div>
+
         </div>
-
-        <!-- Middle Panel (game canvas) -->
-        <div id="game"></div>
-
-        <!-- Right Panel -->
-        <div class="right"></div>
-
+        <div id="footer">
+            <p>
+                Webpage made by <a href="https://github.com/Sylhare" target="_blank">sylhare</a>
+            </p>
+        </div>
     </div>
-
 </body>
 
 </html>
