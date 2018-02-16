@@ -102,16 +102,32 @@ function Zone(x, y, mine, size, value) {
             ctx.font = String(Math.ceil(this.size - this.size * 0.2)) + "px Arial";
             ctx.textAlign = "left";
             ctx.fillStyle = colorSelector(this, this.value);
-            ctx.fillText(this.value, this.x + this.size * 0.25, this.y + this.size * 0.75);
+            ctx.fillText(
+                this.value,
+                this.x + this.size * 0.25,
+                this.y + this.size * 0.75
+            );
 
             if (this.mine) {
                 //Draw the mine
-                ctx.drawImage(mineIMG, this.x + this.size * 0.1, this.y + this.size * 0.1, this.size * 0.8, this.size * 0.8);
+                ctx.drawImage(
+                    mineIMG,
+                    this.x + this.size * 0.1,
+                    this.y + this.size * 0.1,
+                    this.size * 0.8,
+                    this.size * 0.8
+                );
             }
 
         } else if (this.flag) {
             //Draw the flag
-            ctx.drawImage(flagIMG, this.x + this.size * 0.2, this.y + this.size * 0.1, this.size * 0.60, this.size * 0.7);
+            ctx.drawImage(
+                flagIMG,
+                this.x + this.size * 0.2,
+                this.y + this.size * 0.1,
+                this.size * 0.6,
+                this.size * 0.7
+            );
 
         }
 

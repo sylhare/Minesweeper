@@ -28,7 +28,18 @@ describe("The Board", function() {
             expect(zone.flag).toBeFalsy();
         });
 
-        it("has")
+        it("can draw itself on the board", function() {
+            var canvas = document.createElement("canvas");
+            var blank = document.createElement('canvas');
+            document.body.appendChild(canvas);
+
+            var zone = new Zone(1, 1, true, 20, 2);
+            zone.draw(canvas);
+
+            // Check that the canvas has something on it
+            expect(canvas.toDataURL() !== blank.toDataURL()).toBeTruthy();
+            document.body.removeChild(document.body.lastElementChild);
+        });
 
     });
 });
