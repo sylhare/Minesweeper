@@ -1,15 +1,42 @@
-describe("A spec", function() {
-    it("is just a function, so it can contain any code", function() {
-        var foo = 0;
-        foo += 1;
-        expect(foo).toEqual(1);
+describe("A Board", function() {});
+
+describe("A Zone of the Board", function() {});
+
+describe("An explosion", function() {});
+
+describe("A timer", function() {
+    var timer;
+
+    beforeEach(function() {
+        timer = new Timer();
+        timer.start();
     });
 
-    it("can have more than one expectation", function () {
-        var foo = 0;
-        foo += 1;
-
-        expect(foo).toEqual(1);
-        expect(true).toEqual(true);
+    it("starts at 00:00 ", function() {
+        expect(timer.counter).toEqual("00:00");
     });
+
+    it("saves counter at stop time", function() {
+        timer.counter = "00:02";
+        timer.stop();
+
+        expect(timer.counter).toEqual("00:02");
+    });
+
+    it("can be reset to 00:00 at any time", function() {
+        timer.counter = "11:11";
+        timer.reset();
+
+        expect(timer.counter).toEqual("00:00");
+
+        timer.counter = "22:22";
+        timer.stop();
+        timer.reset();
+
+        expect(timer.counter).toEqual("00:00");
+
+
+    });
+
 });
+
