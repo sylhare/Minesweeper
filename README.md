@@ -1,6 +1,6 @@
-# Minesweeper  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b4bffb1c4df447549abecb0274433c8f)](https://www.codacy.com/app/Sylhare/Minesweeper?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Sylhare/Minesweeper&amp;utm_campaign=Badge_Grade)
+# Minesweeper
 
-[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/uses-js.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/check-it-out.svg)](http://forthebadge.com) 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b4bffb1c4df447549abecb0274433c8f)](https://www.codacy.com/app/Sylhare/Minesweeper?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Sylhare/Minesweeper&amp;utm_campaign=Badge_Grade) [![Build Status](https://travis-ci.org/Sylhare/Minesweeper.svg?branch=master)](https://travis-ci.org/Sylhare/Minesweeper)
 
 ### Instructions
 
