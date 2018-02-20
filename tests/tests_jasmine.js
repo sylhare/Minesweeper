@@ -1,3 +1,9 @@
+/* Run local:
+* In ../tests/
+*
+* karma start --single-run
+*/
+
 describe("MINESWEEPER'S TESTS", function() {
 
 describe("The Board", function() {
@@ -25,26 +31,22 @@ describe("The Board", function() {
 
     });
 
-    it("Unveils the right zones on click", function() {
-        var canvas = document.createElement("canvas");
-        var blank = document.createElement("canvas");
-        var board = new Board(64, 0);
-        var setMines = [9, 13, 30, 43];
-        board.mineNumber = 4;
-        var willbeUnveiled = [3, 11, 19, 24, 25, 26, 27, 28, 32, 33, 40, 41, 45, 46, 47, 48, 49, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63];
+    it("unveils the right zones on click", function() {
+        var board = new MockBoard();
+        var zoneUnveiled54Clicked = [
+            2, 3, 4, 10, 11, 12, 16, 17, 18, 19,
+            20, 21, 24, 25, 26, 27, 28, 29,
+            32, 33, 34, 36, 37, 38, 39,
+            40, 41, 42, 44, 45, 46, 47, 48, 49,
+            50, 52, 53, 54, 55, 56, 57, 58, 59,
+            60, 61, 62, 63
+        ];
 
-        for(var m=0; m < setMines.length; m++){
-            board.zones[m].mine = true;
+        board.clicked(54);
+
+        for (var z=0; z < zoneUnveiled54Clicked.length; z++){
+            expect(board.zones[zoneUnveiled54Clicked[z]].isUnveiled).toBeTruthy();
         }
-
-        document.body.appendChild(canvas);
-        board.clicked(54, canvas);
-
-        for (var z=0; z < willbeUnveiled.length; z++){
-           // expect(board.zones[willbeUnveiled[z]].isUnveiled).toBeTruthy();
-            console.log(willbeUnveiled[z]+" isUnveiled: "+board.zones[willbeUnveiled[z]].isUnveiled)
-        }
-        document.body.removeChild(document.body.lastElementChild);
 
     });
 

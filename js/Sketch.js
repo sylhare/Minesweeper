@@ -186,7 +186,7 @@ function setup(canvas) {
 
     timer.reset();
 
-    board = new Board(64, 0);
+    board = new Board(64);
     //board = new Board(canvas);
     board.draw(canvas);
 

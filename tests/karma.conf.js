@@ -19,7 +19,7 @@ module.exports = function(config) {
       '../js/Explosion.js',
       '../js/Timer.js',
       '../js/Zone.js',
-      'tests_jasmine.js'
+      '../tests/*'
     ],
 
 
