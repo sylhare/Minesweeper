@@ -51,15 +51,15 @@ Here are the features with the functionality per version and the one to come.
 - [X] Clicking on the end game window button restart the game.
 - [X] The timer freezes at the end of the game.
 - [X] Page design enhancement
-- [ ] Possibility to change number of mines in settings
 - [X] Information page of the game
 - [X] Add Test framework (jasmine) available at [/tests/tests_jasmine.html](https://sylhare.github.io/Minesweeper/tests/tests_jasmine.html)
 - [X] Have all major functions of the minesweeper covered.
 - [X] Add Travis Support for CI/CD with tests
-- [ ] Clean up of V2 code
+- [X] Clean up of V2 code
 
 #### For the future versions ?
 
+- [ ] Possibility to change number of mines in settings
 - [ ] Update the project folder's structure?
 - [ ] Reduce cyclomatic complexity
 - [ ] A Selector to choose the board size in settings
