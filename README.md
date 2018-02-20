@@ -1,6 +1,6 @@
-# Minesweeper  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b4bffb1c4df447549abecb0274433c8f)](https://www.codacy.com/app/Sylhare/Minesweeper?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Sylhare/Minesweeper&amp;utm_campaign=Badge_Grade)
+# Minesweeper
 
-[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/uses-js.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/check-it-out.svg)](http://forthebadge.com) 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b4bffb1c4df447549abecb0274433c8f)](https://www.codacy.com/app/Sylhare/Minesweeper?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Sylhare/Minesweeper&amp;utm_campaign=Badge_Grade) [![Build Status](https://travis-ci.org/Sylhare/Minesweeper.svg?branch=master)](https://travis-ci.org/Sylhare/Minesweeper)
 
 ### Instructions
 
@@ -47,19 +47,23 @@ Here are the features with the functionality per version and the one to come.
 
 #### Version v3.0 -> :construction: 
 
-- [ ] A button to start the game and the Timer.
+- [X] The timer starts when the game starts.
 - [X] Clicking on the end game window button restart the game.
 - [X] The timer freezes at the end of the game.
 - [X] Page design enhancement
 - [ ] Possibility to change number of mines in settings
 - [X] Information page of the game
-- [ ] Reduce cyclomatic complexity
+- [X] Add Test framework (jasmine) available at [/tests/tests_jasmine.html](https://sylhare.github.io/Minesweeper/tests/tests_jasmine.html)
+- [X] Have all major functions of the minesweeper covered.
+- [X] Add Travis Support for CI/CD with tests
 - [ ] Clean up of V2 code
-- [ ] Refactoring the project folder's structure
 
 #### For the future versions ?
 
+- [ ] Update the project folder's structure?
+- [ ] Reduce cyclomatic complexity
 - [ ] A Selector to choose the board size in settings
+- [ ] Have same format for all in game images
 - [ ] Make it portable (for phones, or in an App)
 - [ ] Have a saving feature (using cookies)
 - [ ] Make it into an node package

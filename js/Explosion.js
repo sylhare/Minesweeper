@@ -33,28 +33,28 @@ function randomDirection() {
 
     var angle = random(0, 360) * Math.PI / 180;
     return {
-                x: Math.cos(angle),
-                y: Math.sin(angle)
-            };
+        x: Math.cos(angle),
+        y: Math.sin(angle)
+    };
 
 }
 
-function Particle() {
+function Particle(x, y, radius, scale, speed, color) {
     /*
         Particles simple colored dot with a fixed size that moves
         in a direction at a certain speed.
     
     */
-    this.x;
-    this.y;
-    this.radius;
-    this.scale; // for particle reduction
+    this.x = x;
+    this.y = y;
+    this.radius = radius;
+    this.scale = scale; // for particle reduction
+    this.speed = speed; //speed at which they go to a direction
+    this.color = color;
     this.direction = {
         x: 0,
         y: 0
     }; //vector
-    this.speed; //speed at which they go to a direction
-    this.color;
 
     this.update = function () {
         /* Update the particle */
@@ -112,10 +112,8 @@ function Explosion(x, y, number, size, speed) {
         /* Initiate the explosion by creating all particles */
 
         for (var i = 0; i < n; i++) {
-            var p = new Particle();
+            var p = new Particle(x, y);
 
-            p.x = x;
-            p.y = y;
             p.radius = random(sizeMin, sizeMax);
             p.scale = random(4, 10);
             p.color = randomColor();

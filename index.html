@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Sylhare">
     <meta name="description" content="Basic Minesweeper game in Javascript">
@@ -27,9 +27,9 @@
             <h1 class="title">Minesweeper</h1>
         </div>
 
-        <!-- Left Panel -->
+        <!-- navigation panel -->
         <div id="nav">
-            <div class="left">
+            <div class="nav-left">
                 <div id="game-info">
                     <img id="mine-img" alt="mine" src="img/mine.svg">
                     <!-- <span id="mines" class="info">8</span> -->
@@ -60,11 +60,11 @@
                     <!--<h1 id="customAlert-title" class="">Alert</h1>-->
                     <img id="alert-img" src="" alt="alert" class="alertBox-img">
                     <p id="customAlert-content">message</p>
-                    <a class="button" href="#" onclick="removeCustomAlert()">Ok</a>
+                    <a class="button" href="#" onclick="removeAlert()">Ok</a>
                 </div>
             </div>
 
-            <!-- Middle Panel (game canvas) -->
+            <!-- Game canvas -->
             <div id="game"></div>
 
         </div>
