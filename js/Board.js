@@ -20,6 +20,24 @@ function removeFromArray(value, array) {
     return results;
 }
 
+function setMineNumber(value, defaultValue) {
+    try {
+        try {
+            if (x === String) throw new TypeError("Should be a number");
+            if (isNaN(x)) throw {
+                name: "Input error",
+                level: "Show Stopper",
+                message: "Invalid input detected. Please try a number",
+            };
+        } catch (e) {
+            console.log("Error: " + e);
+        }
+        if (x == 0) throw "Warninrg, input is 0";
+    } catch (e) {
+        console.log("%c " + e + "the amount of mines should be greater than 0", "color: yellow")
+    }
+}
+
 function Board(map, mineNumber) {
     /*
             Board accept two variables, map which defines how the board is created,
