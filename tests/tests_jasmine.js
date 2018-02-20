@@ -115,8 +115,7 @@ describe("The explosion", function() {
         });
 
         it("all have random colors", function(){
-            var p = 0;
-            var first_particle = e.particles[p];
+            var first_particle = e.particles[0];
             var another_particle = first_particle;
 
             for (var p = 1; p < e.particles.length; p++) {

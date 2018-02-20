@@ -47,14 +47,14 @@ Here are the features with the functionality per version and the one to come.
 
 #### Version v3.0 -> :construction: 
 
-- [ ] A button to start the game and the Timer.
+- [X] The timer starts when the game starts.
 - [X] Clicking on the end game window button restart the game.
 - [X] The timer freezes at the end of the game.
 - [X] Page design enhancement
 - [ ] Possibility to change number of mines in settings
 - [X] Information page of the game
 - [X] Add Test framework (jasmine) available at [/tests/tests_jasmine.html](https://sylhare.github.io/Minesweeper/tests/tests_jasmine.html)
-- [ ] Have all major functions of the minesweeper covered.
+- [X] Have all major functions of the minesweeper covered.
 - [X] Add Travis Support for CI/CD with tests
 - [ ] Clean up of V2 code
 

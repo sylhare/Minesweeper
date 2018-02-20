@@ -200,7 +200,6 @@ window.onload = function () {
     var body = document.getElementById("game");
     //var body = document.getElementsByTagName("body")[0];
     var canvas = createCanvas(body); //Used also in Zone.js and Board.js to draw the game
-    var ctx = canvas.getContext("2d");
 
     addListener(canvas, "mousemove");
     addListener(canvas, "click");

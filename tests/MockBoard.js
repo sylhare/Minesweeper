@@ -29,7 +29,11 @@ MockBoard = function(){
     * */
     var board = new Board(64, 0);
     var zoneWithMine = [9, 13, 30, 43];
-    var zoneAtOne = [0, 1, 2, 4, 5, 6, 8, 10, 12, 14, 16, 17, 18, 20, 21, 29, 31, 34, 35, 36, 37, 38, 39, 42, 44, 50, 51, 52,];
+    var zoneAtOne = [
+        0, 1, 2, 4, 5, 6, 8, 10,
+        12, 14, 16, 17, 18, 20,
+        21, 29, 31, 34, 35, 36,
+        37, 38, 39, 42, 44, 50, 51, 52];
     var zoneAtTwo = [21, 22];
 
     board.mineNumber = 4;
