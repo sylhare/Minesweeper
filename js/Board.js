@@ -7,7 +7,7 @@ function autoSize(n) {
 }
 
 function removeFromArray(value, array) {
-    /* Return a new array without all of the occurences of the specified value */
+    /* Return a new array without all of the occurrences of the specified value */
     var results = [];
 
     for (var i = 0; i < array.length; i++) {
@@ -25,7 +25,7 @@ function Board(map, mineNumber) {
             Board accept two variables, map which defines how the board is created,
             If you feed Board with a canvas, it will fill it with cases,
             If you feed Board with a number, it will create a square of zones starting top left
-            A board is composed of multiple independant square zones
+            A board is composed of multiple independent square zones
             example:
 
                              North
@@ -55,11 +55,11 @@ function Board(map, mineNumber) {
     this.row = Math.round(Math.sqrt(map)) || Math.floor((autoSize(map.height)));
     this.padding = pad;
     this.zoneSize = size;
-    this.boardSize = this.column * this.row || 64;
+    this.boardSize = this.column * this.row;
     this.numberNotUnveiled = this.boardSize;
     this.mineNumber = mineNumber || this.column;
     this.zones = [];
-    this.mines = [];
+    this.mines = [];‹
     this.values = Array.apply(null, new Array(this.boardSize)).map(Number.prototype.valueOf, 0); // Array of zeros
 
     this.autoFit = function (n) {
@@ -125,17 +125,19 @@ function Board(map, mineNumber) {
 
     this.neighbour = function (z) {
         /* Return an array with all available surrounding zones of the *z* input one */
-        var coord = [this.north(z),
-                    this.north(this.east(z)),
-                    this.north(this.west(z)),
-                    this.south(z),
-                    this.south(this.east(z)),
-                    this.south(this.west(z)),
-                    this.east(z),
-                    this.west(z)];
+        var neighbours = [
+            this.north(z),
+            this.north(this.east(z)),
+            this.north(this.west(z)),
+            this.south(z),
+            this.south(this.east(z)),
+            this.south(this.west(z)),
+            this.east(z),
+            this.west(z)
+        ];
 
         // Coord with this.boardsize as value are not available and are removed
-        return removeFromArray(this.boardSize, coord);
+        return removeFromArray(this.boardSize, neighbours);
 
     };
 
@@ -289,7 +291,7 @@ function Board(map, mineNumber) {
     };
 
     this.clicked = function (z, canvas) {
-        /* Define how the board reacts when it's clicked */
+        /* Define how the board reacts when it's clicked, with z being the clicked zone */
 
         this.expand(z);
 

@@ -53,13 +53,17 @@ Here are the features with the functionality per version and the one to come.
 - [X] Page design enhancement
 - [ ] Possibility to change number of mines in settings
 - [X] Information page of the game
-- [ ] Reduce cyclomatic complexity
+- [X] Add Test framework (jasmine) available at [/tests/tests_jasmine.html](https://sylhare.github.io/Minesweeper/tests/tests_jasmine.html)
+- [ ] Have all major functions of the minesweeper covered.
+- [X] Add Travis Support for CI/CD with tests
 - [ ] Clean up of V2 code
-- [ ] Refactoring the project folder's structure
 
 #### For the future versions ?
 
+- [ ] Update the project folder's structure?
+- [ ] Reduce cyclomatic complexity
 - [ ] A Selector to choose the board size in settings
+- [ ] Have same format for all in game images
 - [ ] Make it portable (for phones, or in an App)
 - [ ] Have a saving feature (using cookies)
 - [ ] Make it into an node package
