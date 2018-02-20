@@ -37,8 +37,8 @@ function createCanvas(body, id, width, height) {
 function updateTextNode(id, text) {
     /* Update text node of the defined id with text */
     var node = document.getElementById(id);
-    node.textContent = text || "error"; //Firefox
-    node.innerText = text || "error"; //IE
+    node.textContent = String(text) || "error"; //Firefox
+    node.innerText = String(text) || "error"; //IE
 }
 
 function addTextNode(parentId, text, id) {
@@ -186,7 +186,7 @@ function setup(canvas) {
 
     timer.reset();
 
-    board = new Board(64);
+    board = new Board(64, 0);
     //board = new Board(canvas);
     board.draw(canvas);
 

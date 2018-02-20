@@ -20,7 +20,7 @@ function removeFromArray(value, array) {
     return results;
 }
 
-function setMineNumber(value, defaultValue) {
+function setMineNumber(x, defaultValue) {
     try {
         try {
             if (x === String) throw new TypeError("Should be a number");
@@ -30,12 +30,15 @@ function setMineNumber(value, defaultValue) {
                 message: "Invalid input detected. Please try a number",
             };
         } catch (e) {
-            console.log("Error: " + e);
+            console.log("Error: " + e.name);
+            x = defaultValue;
         }
-        if (x == 0) throw "Warninrg, input is 0";
+        if (x === 0) throw "Warninrg, input is 0";
     } catch (e) {
-        console.log("%c " + e + "the amount of mines should be greater than 0", "color: yellow")
+        console.log("%c " + e + ", the amount of mines should be greater than 0", "color: orange")
     }
+
+    return x;
 }
 
 function Board(map, mineNumber) {
@@ -75,9 +78,9 @@ function Board(map, mineNumber) {
     this.zoneSize = size;
     this.boardSize = this.column * this.row;
     this.numberNotUnveiled = this.boardSize;
-    this.mineNumber = mineNumber || this.column;
+    this.mineNumber = setMineNumber(mineNumber, this.column);
     this.zones = [];
-    this.mines = [];‹
+    this.mines = [];
     this.values = Array.apply(null, new Array(this.boardSize)).map(Number.prototype.valueOf, 0); // Array of zeros
 
     this.autoFit = function (n) {

@@ -6,10 +6,6 @@ sudo: required
 addons:
   chrome: stable
 
-branches:
-  only:
-    - test
-
 before_install:
  - npm install --save-dev jasmine
  - npm install --save-dev karma
