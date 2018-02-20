@@ -34,7 +34,6 @@ function Timer() {
 
         this.timer = setInterval(function () {
             self.count();
-            console.log(self.counter);
         }, 1000);
     };
 
