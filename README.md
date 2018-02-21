@@ -45,7 +45,7 @@ Here are the features with the functionality per version and the one to come.
 - [X] Document the "How to Play" section
 - [X] Clean up of V1 code
 
-#### Version v3.0 -> :construction: 
+#### Version v3.0 -> [Released !!](https://github.com/Sylhare/Minesweeper/releases/tag/v3.0)
 
 - [X] The timer starts when the game starts.
 - [X] Clicking on the end game window button restart the game.
