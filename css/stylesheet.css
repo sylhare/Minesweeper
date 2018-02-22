@@ -1,12 +1,25 @@
 /* -- General -- */
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
 
 body {
+    position: relative;
     font-family: "Roboto", sans-serif;
     line-height: 1.2em;
     font-size: 1em;
-    width: 100%;
-    margin: 0;
     background: #eee;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
 }
 
 p {
@@ -88,8 +101,9 @@ h1 {
     margin: 20px 0;
     background: white;
     padding: 20px;
-    clear: both;
     border-radius: 3px;
+    width: 94%;
+    clear:both;
 }
 
 #content,
@@ -98,16 +112,22 @@ h1 {
 }
 
 #footer {
+    position: absolute;
+    text-align: right;
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
     border-bottom: 1px #ccc solid;
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
+    margin: 20px;
+ }
+
 
 #footer p {
     text-align: right;
     text-transform: uppercase;
     font-size: 80%;
     color: grey;
+
 }
 
 
