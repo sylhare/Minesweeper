@@ -1,25 +1,10 @@
-/* -- General -- */
-html {
-    height: 100%;
-    box-sizing: border-box;
-}
-
-
 body {
-    position: relative;
     font-family: "Roboto", sans-serif;
     line-height: 1.2em;
     font-size: 1em;
     background: #eee;
     margin: 0;
-    padding-bottom: 6rem;
-    min-height: 100%;
-}
-
-*,
-*:before,
-*:after {
-    box-sizing: inherit;
+    padding: 0;
 }
 
 p {
@@ -38,19 +23,49 @@ h1 {
     margin: 0 0 .5em 0;
 }
 
-.img {
+.img-info {
     display: inline-block;
     width: 1.15em;
     margin-bottom: -3px;
 }
 
-.center {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
+/* -- flex -- */
+
+.flex-parent {
+    display: flex;
+    flex-direction: column;
+    min-height: 95vh;
+}
+
+.flex-container {
+    flex: 1 1 auto;
+}
+
+.flex-nav-container {
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.item-1 {
+    display: flex;
+    flex-direction: row;
+}
+
+@media screen and (max-width: 400px) {
+    .separator {
+        height: 0;
+        width: 100%;
+        flex-basis: 100%;
+        background-color: blue;
+        order: 2;
+    }
+
+    .item-1 {
+        order: 3;
+        margin-top: 2.5em;
+    }
 }
 
 
@@ -62,30 +77,10 @@ h1 {
 
 #nav {
     width: 100%;
-    display: inline-block;
-    text-align: right;
-    float: left;
     margin-bottom: 20px;
+    vertical-align: top;
 }
 
-#nav ul li {
-    display: inline-block;
-    height: 35px;
-}
-
-#nav ul li a {
-    padding: 20px;
-    background: orange;
-}
-
-#nav ul li a:hover {
-    background-color: #ffb424;
-    box-shadow: 0 1px 1px #666;
-}
-
-#nav ul li a:active {
-    background-color: #ff8f00;
-}
 
 .title {
     width: 100%;
@@ -93,7 +88,6 @@ h1 {
     padding: 0;
     margin-top: 5px;
     margin-bottom: 30px;
-    display: inline-block;
     color: grey;
 }
 
@@ -102,8 +96,6 @@ h1 {
     background: white;
     padding: 20px;
     border-radius: 3px;
-    width: 94%;
-    clear:both;
 }
 
 #content,
@@ -111,15 +103,31 @@ h1 {
     box-shadow: 0 1px 1px #999;
 }
 
+#nav .menu {
+    display: inline-block;
+    margin-bottom: 3px;
+}
+
+#nav .menu a {
+    padding: 20px;
+    background: orange;
+    margin-right: 2px;
+}
+
+#nav .menu a:hover {
+    background-color: #ffb424;
+    box-shadow: 0 1px 1px #666;
+}
+
+#nav .menu a:active {
+    background-color: #ff8f00;
+}
+
 #footer {
-    position: absolute;
     text-align: right;
-    right: 10px;
-    bottom: 10px;
-    left: 10px;
+    margin: 10px;
     border-bottom: 1px #ccc solid;
-    margin: 20px;
- }
+}
 
 
 #footer p {
@@ -136,7 +144,6 @@ h1 {
 canvas,
 #board {
     border: 3px solid grey;
-    display: inline-block;
 }
 
 #container {
@@ -145,31 +152,14 @@ canvas,
     text-align: center;
 }
 
-.info {
-    float: left;
+#mines.info {
     color: gray;
     font-size: 20px;
-    margin-right: 3px;
-    margin-top: 3px;
-}
-
-/*noinspection CssUnusedSymbol*/
-#game,
-.nav-left {
-    display: inline-block;
-    vertical-align: top;
-}
-
-.nav-left {
-    margin-top: 5px;
-    height: 40px;
-    display: inline-block;
-    float: left;
+    margin-right: 17px;
 }
 
 #game-info {
     height: 25px;
-    display: inline-block;
 }
 
 #game-info:hover {
@@ -177,8 +167,7 @@ canvas,
 }
 
 #mine-img {
-    display: inline-block;
-    margin-right: 5px;
+    vertical-align: bottom;
     width: 25px;
 }
 
@@ -186,10 +175,7 @@ canvas,
 /* -- timer -- */
 
 .timer {
-    display: inline-block;
-    text-align: center;
     color: gray;
-    margin-left: 5px;
     opacity: 0.9;
 }
 
@@ -205,10 +191,6 @@ canvas,
     color: #0099FF;
 }
 
-
-.clearfix{
-    clear:both;
-}
 
 /* -- Alert -- */
 

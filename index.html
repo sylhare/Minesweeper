@@ -22,56 +22,53 @@
 
 <body>
 
-    <div id="page">
-        <div id="logo">
-            <h1 class="title">Minesweeper</h1>
+<div id="page" class="flex-parent">
+    <h1 class="title">Minesweeper</h1>
+
+    <!-- navigation panel -->
+    <div id="nav" class="flex-nav-container">
+    <div class="item-1">
+        <div id="game-info">
+            <img id="mine-img" alt="mine" src="img/mine.svg">
+            <!-- <span id="mines" class="info">8</span> -->
         </div>
-
-        <!-- navigation panel -->
-        <div id="nav">
-            <div class="nav-left">
-                <div id="game-info">
-                    <img id="mine-img" alt="mine" src="img/mine.svg">
-                    <!-- <span id="mines" class="info">8</span> -->
-                </div>
-
-                <div class="timer">
-                    <p>Time</p>
-                    <timer id="timer">00:00</timer>
-                </div>
-            </div>
-
-            <ul>
-                <li><a class="button" href="./index.html">Game</a></li>
-                <li><a class="button" href="./pages/settings.html">Settings</a></li>
-                <li><a class="button" href="pages/info.html"> Info </a></li>
-            </ul>
-        </div>
-
-        <!-- Minesweeper game  -->
-        <div id="container">
-
-
-            <!-- Custom Alert -->
-            <div id="alertContainer">
-                <div id="alertBox" class="center">
-                    <!--<h1 id="customAlert-title" class="">Alert</h1>-->
-                    <img id="alert-img" src="" alt="alert" class="alertBox-img">
-                    <p id="customAlert-content">message</p>
-                    <a class="button" href="#" onclick="removeAlert()">Ok</a>
-                </div>
-            </div>
-
-            <!-- Game canvas -->
-            <div id="game"></div>
-
-        </div>
-        <div id="footer">
-            <p>
-                Webpage made by <a href="https://github.com/Sylhare" target="_blank">sylhare</a>
-            </p>
+        <div class="timer menu">
+            <p>Time</p>
+            <timer id="timer">00:00</timer>
         </div>
     </div>
+
+        <div class="separator"></div>
+        <div>
+        <div class="menu"><a class="button" href="./index.html">Game</a></div>
+        <div class="menu"><a class="button" href="./pages/settings.html">Settings</a></div>
+        <div class="menu"><a class="button" href="pages/info.html"> Info </a></div>
+        </div>
+    </div>
+
+    <!-- Minesweeper game  -->
+    <div id="container" class="flex-container">
+
+        <!-- Custom Alert -->
+        <div id="alertContainer">
+            <div id="alertBox" class="center">
+                <!--<h1 id="customAlert-title" class="">Alert</h1>-->
+                <img id="alert-img" src="" alt="alert" class="alertBox-img">
+                <p id="customAlert-content">message</p>
+                <a class="button" href="#" onclick="removeAlert()">Ok</a>
+            </div>
+        </div>
+
+        <!-- Game canvas -->
+        <div id="game"></div>
+
+    </div>
+    <div id="footer">
+        <p>
+            Webpage made by <a href="https://github.com/Sylhare" target="_blank">sylhare</a>
+        </p>
+    </div>
+</div>
 </body>
 
 </html>
