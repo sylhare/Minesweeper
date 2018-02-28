@@ -22,51 +22,84 @@
 
 <body>
 
-    <div id="page">
-        <div id="logo">
-            <h1 class="title">Minesweeper</h1>
-        </div>
+    <div id="page" class="flex-parent">
+        <h1 class="title">Minesweeper</h1>
 
         <!-- navigation panel -->
-        <div id="nav">
-            <div class="nav-left">
+        <div id="nav" class="flex-nav-container">
+            <div class="item-1">
                 <div id="game-info">
                     <img id="mine-img" alt="mine" src="img/mine.svg">
                     <!-- <span id="mines" class="info">8</span> -->
                 </div>
-
-                <div class="timer">
+                <div class="timer menu">
                     <p>Time</p>
                     <timer id="timer">00:00</timer>
                 </div>
             </div>
 
-            <ul>
-                <li><a class="button" href="./index.html">Game</a></li>
-                <li><a class="button" href="./pages/settings.html">Settings</a></li>
-                <li><a class="button" href="pages/info.html"> Info </a></li>
-            </ul>
+            <div class="separator"></div>
+            <div>
+                <div class="menu" onclick="show('minesweeper-game');"><a class="button">Game</a></div>
+                <div class="menu" onclick="show('settings');"><a class="button">Settings</a></div>
+                <div class="menu" onclick="show('info');"><a class="button"> Info </a></div>
+            </div>
         </div>
 
-        <div class="clearfix"></div>
-
         <!-- Minesweeper game  -->
-        <div id="container">
+        <div class="container flex-container">
+            <div id="settings" class="content" style="display: none;">
+                <h2>Settings</h2>
+                <p>
+                    You can configure the minesweeper here. Once you've changed the parameters go back to the
+                    <a onclick="show('minesweeper-game');">game</a> to test it!</p>
 
-
-            <!-- Custom Alert -->
-            <div id="alertContainer">
-                <div id="alertBox" class="center">
-                    <!--<h1 id="customAlert-title" class="">Alert</h1>-->
-                    <img id="alert-img" src="" alt="alert" class="alertBox-img">
-                    <p id="customAlert-content">message</p>
-                    <a class="button" href="#" onclick="removeAlert()">Ok</a>
+                <h3> Mine Density </h3>
+                <p> Change the amount of mine (i.e. the density) in the board. </p>
+                <div class="slide-container">
+                    <p>Low</p>
+                    <input type="range" min="1" max="100" value="50" class="slider" id="density-setting">
+                    <p>High</p>
                 </div>
+
+                <h3> Board size </h3>
+                <p> You can change the board size, the number of zone within the board. </p>
+                <div class="slide-container">
+                    <p>Small</p>
+                    <input type="range" min="1" max="100" value="50" class="slider" id="size-setting">
+                    <p>Big</p>
+                </div>
+
             </div>
+            <div id="info" class="content" style="display: none;">
+                <h2>Info</h2>
 
-            <!-- Game canvas -->
-            <div id="game"></div>
+                <p>This game is a minesweeper, you win be unveiling all case that does <b>not</b> contain a mine.</p>
+                <ul>
+                    <li>You lose if you click on a mine <img class="img-info" alt="mine" src="./img/mine.svg"></li>
+                    <li>You can flag <img class="img-info" alt="flag" src="./img/flag.svg"> zones of the board by right-clicking</li>
+                    <li>The number on the zone <img class="img-info" alt="zone" src="./img/zone.png"> indicates the number of mine(s) nearby</li>
+                </ul>
+                <br>
+                <p>The game test page is available <a href="./tests/tests.html">here</a>.</p>
 
+            </div>
+            <div id="minesweeper-game">
+
+                <!-- Custom Alert -->
+                <div id="alertContainer">
+                    <div id="alertBox" class="center">
+                        <!--<h1 id="customAlert-title" class="">Alert</h1>-->
+                        <img id="alert-img" src="" alt="alert" class="alertBox-img">
+                        <p id="customAlert-content">message</p>
+                        <a class="button" href="#" onclick="removeAlert()">Ok</a>
+                    </div>
+                </div>
+
+                <!-- Game canvas -->
+                <div id="game" class=""></div>
+
+            </div>
         </div>
         <div id="footer">
             <p>

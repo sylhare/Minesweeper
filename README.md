@@ -45,21 +45,21 @@ Here are the features with the functionality per version and the one to come.
 - [X] Document the "How to Play" section
 - [X] Clean up of V1 code
 
-#### Version v3.0 -> :construction: 
+#### Version v3.0 -> [Released !!](https://github.com/Sylhare/Minesweeper/releases/tag/v3.0)
 
 - [X] The timer starts when the game starts.
 - [X] Clicking on the end game window button restart the game.
 - [X] The timer freezes at the end of the game.
 - [X] Page design enhancement
-- [ ] Possibility to change number of mines in settings
 - [X] Information page of the game
-- [X] Add Test framework (jasmine) available at [/tests/tests_jasmine.html](https://sylhare.github.io/Minesweeper/tests/tests_jasmine.html)
+- [X] Add Test framework (jasmine) available at [/tests/tests.html](https://sylhare.github.io/Minesweeper/tests/tests.html)
 - [X] Have all major functions of the minesweeper covered.
 - [X] Add Travis Support for CI/CD with tests
-- [ ] Clean up of V2 code
+- [X] Clean up of V2 code
 
 #### For the future versions ?
 
+- [ ] Possibility to change number of mines in settings
 - [ ] Update the project folder's structure?
 - [ ] Reduce cyclomatic complexity
 - [ ] A Selector to choose the board size in settings
@@ -70,7 +70,8 @@ Here are the features with the functionality per version and the one to come.
 
 ### More information on the project
 
-I used javascript and CSS without any framework. The minesweeper is rendered in a canvas object. 
+I used javascript and CSS without any framework (beside the one for testing: [Jasmine](https://github.com/jasmine/jasmine), used with Karma on Travis CI). 
+The minesweeper is rendered in a canvas object. 
 
 The project is build with:
 
