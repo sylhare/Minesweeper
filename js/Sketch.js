@@ -91,6 +91,21 @@ function removeAlert() {
     setup(document.getElementById("board")); // restart the game, /!\ "board" is default value  
 }
 
+function show(elementID) {
+    var array = ["info", "settings", "minesweeper-game"];
+    var index = array.indexOf(elementID);
+
+    if (index > -1) {
+        array.splice(index, 1);
+    }
+
+    console.log(elementID);
+
+    document.getElementById(elementID).style.display = "block";
+    document.getElementById(array[0]).style.display = "none";
+    document.getElementById(array[1]).style.display = "none";
+}
+
 
 /*
 ------------------------------------------------------------------

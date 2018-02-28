@@ -40,14 +40,37 @@
 
         <div class="separator"></div>
         <div>
-        <div class="menu"><a class="button" href="./index.html">Game</a></div>
-        <div class="menu"><a class="button" href="./pages/settings.html">Settings</a></div>
-        <div class="menu"><a class="button" href="pages/info.html"> Info </a></div>
+        <div class="menu" onclick="show('minesweeper-game');"><a class="button">Game</a></div>
+        <div class="menu" onclick="show('settings');"><a class="button">Settings</a></div>
+        <div class="menu" onclick="show('info');"><a class="button"> Info </a></div>
         </div>
     </div>
 
     <!-- Minesweeper game  -->
-    <div id="container" class="flex-container">
+    <div class="container flex-container">
+        <div id="settings" class="content" style="display: none;">
+            <h2>Settings</h2>
+            <p>
+                You can configure the minesweeper here. Once you've changed the parameters go back to the
+                <a onclick="show('minesweeper-game');">game</a> to test it!
+            </p>
+        </div>
+        <div id="info" class="content" style="display: none;">
+            <h2>Info</h2>
+
+            <p>This game is a minesweeper, you win be unveiling all case that does <b>not</b> contain a mine.</p>
+            <ul>
+                <li>You lose if you click on a mine <img class="img-info" alt="mine" src="./img/mine.svg"></li>
+                <li>You can flag <img class="img-info" alt="flag" src="./img/flag.svg">
+                    zones of the board by right-clicking</li>
+                <li>The number on the zone <img class="img-info" alt="zone" src="./img/zone.png">
+                    indicates the number of mine(s) nearby</li>
+            </ul>
+            <br>
+            <p>The game test page is available <a href="./tests/tests.html">here</a>.</p>
+
+        </div>
+    <div id="minesweeper-game">
 
         <!-- Custom Alert -->
         <div id="alertContainer">
@@ -60,8 +83,9 @@
         </div>
 
         <!-- Game canvas -->
-        <div id="game"></div>
+        <div id="game" class=""></div>
 
+    </div>
     </div>
     <div id="footer">
         <p>

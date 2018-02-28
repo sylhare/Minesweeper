@@ -30,7 +30,7 @@ function setMineNumber(x, defaultValue) {
                 message: "Default value will be applied",
             };
         } catch (e) {
-            console.log("Error: " + e.name + ". " + e.message);
+            console.log("Warning: " + e.name + ". " + e.message);
             x = defaultValue;
         }
         if (x === 0) throw "Warninrg, input is 0";
