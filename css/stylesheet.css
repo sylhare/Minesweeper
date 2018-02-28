@@ -23,6 +23,11 @@ h1 {
     margin: 0 0 .5em 0;
 }
 
+h3 {
+    margin: 0;
+    padding-top: 1em;
+}
+
 .img-info {
     display: inline-block;
     width: 1.15em;
@@ -156,6 +161,7 @@ canvas,
 #board {
     border: 3px solid grey;
     display: inline-block;
+    margin-top: 1em;
 }
 
 .container {
@@ -163,7 +169,7 @@ canvas,
     width: 100%;
 }
 
-#game{
+#game {
     text-align: center;
 }
 
@@ -206,6 +212,56 @@ canvas,
     color: #0099FF;
 }
 
+/* -- Slider -- */
+
+.slide-container {
+    width: 80%;
+    display: inline-block;
+    margin-left: 20%;
+}
+
+.slide-container p {
+    display: inline-block;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 50%;
+    height: 10px;
+    border-radius: 5px;
+    background: lightgray;
+    box-shadow: inset -1px -1px 1px dimgray;
+    outline: none;
+    opacity: 0.9;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 23px;
+    height: 24px;
+    border: 0;
+    box-shadow: inset -1px -1px 0px lightgray;
+    background: orange;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 23px;    height: 24px;
+    border: 0;
+    background: orange;
+    box-shadow: inset -1px -1px 0px lightgray;
+    cursor: pointer;
+}
+
+input[type=range]::-moz-focus-outer {
+    border: 0;
+}
 
 /* -- Alert -- */
 
