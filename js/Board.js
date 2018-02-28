@@ -23,7 +23,7 @@ function removeFromArray(value, array) {
 function setMineNumber(x, defaultValue) {
     try {
         try {
-            if (typeof(x) === 'string') throw new TypeError("Should be a number");
+            if (typeof(x) === "string") throw new TypeError("Should be a number");
             if (isNaN(x)) throw {
                 name: "Empty input",
                 level: "Warning",
@@ -35,7 +35,7 @@ function setMineNumber(x, defaultValue) {
         }
         if (x === 0) throw "Warninrg, input is 0";
     } catch (e) {
-        console.log("%c " + e + ", the amount of mines should be greater than 0", "color: orange")
+        console.log("%c " + e + ", the amount of mines should be greater than 0", "color: orange");
     }
 
     return x;

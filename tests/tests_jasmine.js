@@ -115,20 +115,20 @@ describe("The explosion", function() {
         });
 
         it("all have random colors", function(){
-            var first_particle = e.particles[0];
-            var another_particle = first_particle;
+            var firstParticle = e.particles[0];
+            var anotherParticle = firstParticle;
 
             for (var p = 1; p < e.particles.length; p++) {
                 var particle = e.particles[p];
-                expect(particle.color).toContain('#');
+                expect(particle.color).toContain("#");
 
-                if (particle.color !== first_particle.color){
-                    another_particle = particle;
+                if (particle.color !== firstParticle.color){
+                    anotherParticle = particle;
                     break;
                 }
             }
 
-            expect(first_particle.color !== another_particle).toBeTruthy();
+            expect(firstParticle.color !== anotherParticle).toBeTruthy();
         });
     });
 });

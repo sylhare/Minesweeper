@@ -246,7 +246,7 @@ canvas,
     width: 23px;
     height: 24px;
     border: 0;
-    box-shadow: inset -1px -1px 0px lightgray;
+    box-shadow: inset -1px -1px 0 lightgray;
     background: orange;
     cursor: pointer;
 }
@@ -255,7 +255,7 @@ canvas,
     width: 23px;    height: 24px;
     border: 0;
     background: orange;
-    box-shadow: inset -1px -1px 0px lightgray;
+    box-shadow: inset -1px -1px 0 lightgray;
     cursor: pointer;
 }
 
