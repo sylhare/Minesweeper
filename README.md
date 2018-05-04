@@ -79,3 +79,5 @@ The project is build with:
 - `Zone.js` defines the zones to be displayed in the board.
 - `Explosion.js` is used to create explosion when a mine explode.
 - `Timer.js` is for the timer used in the game.
+
+
