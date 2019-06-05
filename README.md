@@ -9,6 +9,8 @@
 3. Click on `index.html` to open the file in your default browser
 4. Play !
 
+![Screenchot](https://github.com/sylhare/Minesweeper/blob/master/img/screenshot.png)
+
 ### How to Play
 
 Here is a quick guide on how to play the game:
