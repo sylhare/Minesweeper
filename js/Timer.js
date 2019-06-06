@@ -4,15 +4,15 @@ function Timer() {
     this.count = function () {
         /* Update the counter value when called */
 
-        var now = new Date();
-        var diff = now.getTime() - this.time.getTime();
+        let now = new Date();
+        let diff = now.getTime() - this.time.getTime();
 
-        var minutes = Math.floor(diff / 60000);
-        var seconds = ((diff % 60000) / 1000).toFixed(0); // To have an integer in seconds
+        let minutes = Math.floor(diff / 60000);
+        let seconds = ((diff % 60000) / 1000).toFixed(0); // To have an integer in seconds
 
         this.counter = minutes + ":" + seconds;
 
-        if (seconds === 60) {
+        if (seconds === "60") {
             minutes += 1;
             this.counter = ("0" + minutes).slice(-2) + ":00";
         } else {
@@ -29,7 +29,7 @@ function Timer() {
     this.start = function (startTime) {
         /* Set the timer start time and start counting */
 
-        var self = this;
+        let self = this;
         this.time = startTime || new Date();
 
         this.timer = setInterval(function () {

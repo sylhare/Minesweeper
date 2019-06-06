@@ -1,14 +1,15 @@
-var colorUnveiled = "#E5E9EC";
-var colorDefault = "#C7CFD6";
-var colorHovered = "#E5E9CD";
-var mineIMG = new Image();
+const colorUnveiled = "#E5E9EC";
+const colorDefault = "#C7CFD6";
+const colorHovered = "#E5E9CD";
+const mineIMG = new Image();
 //mineIMG.src = "../img/mine.svg"; //if on a local server
-var flagIMG = new Image();
+const flagIMG = new Image();
+
 //flagIMG.src = "../img/flag.svg"; //if on a local server
 
 function colorSelector(zone, n) {
     /* Select the color based on the value */
-    var color;
+    let color;
 
     switch (n) {
         case 0: // background color of the zone
@@ -89,7 +90,7 @@ function Zone(x, y, mine, size, value) {
     this.draw = function (canvas) {
         /* allows the zone to print itself in a canvas */
 
-        var ctx = canvas.getContext("2d");
+        let ctx = canvas.getContext("2d");
 
         //Draw the zone background
         ctx.beginPath();

@@ -1,11 +1,11 @@
-var board;
-var timer = new Timer();
-var WIN = {
+let board;
+const timer = new Timer();
+const WIN = {
     name: "win",
     //img: "../img/trophy.svg" // uncomment if on a local server 
     text: ["Congratulation!", "br", "you beat the game!"]
 };
-var LOSE = {
+const LOSE = {
     name: "lose",
     //img: "../img/skull.svg", //if on a local server
     text: ["BOOOM !!", "br", "you've exploded!"]
@@ -22,7 +22,7 @@ var LOSE = {
 
 function createCanvas(body, id, width, height) {
     /* Create a canvas and but it in "body" can be any tagnamed element, id, width and height of teh canvas can be configured */
-    var canvas = document.createElement("canvas");
+    let canvas = document.createElement("canvas");
 
     canvas.id = id || "board";
     canvas.width = width || 258;
@@ -36,17 +36,17 @@ function createCanvas(body, id, width, height) {
 
 function updateTextNode(id, text) {
     /* Update text node of the defined id with text */
-    var node = document.getElementById(id);
+    let node = document.getElementById(id);
     node.textContent = String(text) || "error"; //Firefox
     node.innerText = String(text) || "error"; //IE
 }
 
 function addTextNode(parentId, text, id) {
     /* Add a text node under a parentId with a defined id in the HTML */
-    var element = document.createElement("span");
-    var p = text || "error";
-    var node = document.createTextNode(p);
-    var parent = document.getElementById(parentId);
+    let element = document.createElement("span");
+    let p = text || "error";
+    let node = document.createTextNode(p);
+    let parent = document.getElementById(parentId);
 
     element.appendChild(node);
     element.id = id || "info";
@@ -58,7 +58,7 @@ function addTextNode(parentId, text, id) {
 
 function removeChildren(parent) {
     /* Remove all children from the id node */
-    var p = document.getElementById(parent) || parent;
+    let p = document.getElementById(parent) || parent;
 
     while (p.firstChild) {
         p.removeChild(p.firstChild);
@@ -67,12 +67,12 @@ function removeChildren(parent) {
 
 function addAlert(type) {
     /* Add a custom alert with a text as the message and type win or lose */
-    var text, content = document.getElementById("customAlert-content");
+    let text, content = document.getElementById("customAlert-content");
 
     timer.stop();
     removeChildren(content);
 
-    for (var i = 0; i < type.text.length; i++) {
+    for (let i = 0; i < type.text.length; i++) {
         text = type.text[i];
         if (text === "br") {
             content.appendChild(document.createElement(text));
@@ -92,8 +92,8 @@ function removeAlert() {
 }
 
 function show(elementID) {
-    var array = ["info", "settings", "minesweeper-game"];
-    var index = array.indexOf(elementID);
+    let array = ["info", "settings", "minesweeper-game"];
+    let index = array.indexOf(elementID);
 
     if (index > -1) {
         array.splice(index, 1);
@@ -117,7 +117,7 @@ function show(elementID) {
 
 function getMousePos(canvas, evt) {
     /* Return the position of the mouse within the canvas */
-    var rect = canvas.getBoundingClientRect();
+    let rect = canvas.getBoundingClientRect();
     return {
         x: Math.round(evt.clientX - rect.left),
         y: Math.round(evt.clientY - rect.top)
@@ -128,7 +128,7 @@ function addListener(canvas, event) {
     /* Creates the listener to catch events in the canvas */
 
     canvas.addEventListener(event, function (evt) {
-        var pos = getMousePos(canvas, evt);
+        let pos = getMousePos(canvas, evt);
         evt.preventDefault(); // Prevent the default behaviour of the event (for right click)
         board.update(pos.x, pos.y, evt.type, canvas);
     });
@@ -137,7 +137,7 @@ function addListener(canvas, event) {
 function addStartListener(canvas, event) {
     /* the listener for the start of the game */
 
-    var handler = function () {
+    let handler = function () {
         timer.start();
         setTimer("timer");
     };
@@ -150,8 +150,8 @@ function addExplodeListener(canvas) {
     /* Creates the listener and handler for the explode event in the board */
 
     canvas.addEventListener("explode", function (evt) {
-        var explosion = new Explosion(evt.detail.x, evt.detail.y);
-        var exploding = setInterval(function () {
+        let explosion = new Explosion(evt.detail.x, evt.detail.y);
+        let exploding = setInterval(function () {
             board.draw(canvas);
             explosion.update(canvas);
         }, 1000 / 15);
@@ -212,9 +212,9 @@ function setup(canvas) {
 window.onload = function () {
     /* Main of the program, defines what is being done when the page loads */
 
-    var body = document.getElementById("game");
-    //var body = document.getElementsByTagName("body")[0];
-    var canvas = createCanvas(body); //Used also in Zone.js and Board.js to draw the game
+    let body = document.getElementById("game");
+    //let body = document.getElementsByTagName("body")[0];
+    let canvas = createCanvas(body); //Used also in Zone.js and Board.js to draw the game
 
     addListener(canvas, "mousemove");
     addListener(canvas, "click");

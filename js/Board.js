@@ -1,5 +1,5 @@
-var pad = 2; //Value for the padding
-var size = 30; //Value for the size of a zone (a square)
+const pad = 2; //Value for the padding
+const size = 30; //Value for the size of a zone (a square)
 
 function autoSize(n) {
     /* Calculate the number of padding and zoneSize that can fit in n, without missing the first padding */
@@ -8,9 +8,9 @@ function autoSize(n) {
 
 function removeFromArray(value, array) {
     /* Return a new array without all of the occurrences of the specified value */
-    var results = [];
+    let results = [];
 
-    for (var i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; i++) {
         // Coord with this.boardsize as value are not available and are removed
         if (array[i] !== value) {
             results.push(array[i]);
@@ -23,7 +23,7 @@ function removeFromArray(value, array) {
 function setMineNumber(x, defaultValue) {
     try {
         try {
-            if (typeof(x) === "string") throw new TypeError("Should be a number");
+            if (typeof (x) === "string") throw new TypeError("Should be a number");
             if (isNaN(x)) throw {
                 name: "Empty input",
                 level: "Warning",
@@ -43,7 +43,7 @@ function setMineNumber(x, defaultValue) {
 
 function Board(map, mineNumber) {
     /*
-            Board accept two variables, map which defines how the board is created,
+            Board accept two letiables, map which defines how the board is created,
             If you feed Board with a canvas, it will fill it with cases,
             If you feed Board with a number, it will create a square of zones starting top left
             A board is composed of multiple independent square zones
@@ -85,7 +85,7 @@ function Board(map, mineNumber) {
 
     this.autoFit = function (n) {
         /* Try to reduce the amount of unused space in an inconvenient Canvas */
-        var x, y;
+        let x, y;
 
         //Detect the space to small to be filled with zone
         x = n.width - this.column * (this.zoneSize + this.padding) - this.padding;
@@ -146,7 +146,7 @@ function Board(map, mineNumber) {
 
     this.neighbour = function (z) {
         /* Return an array with all available surrounding zones of the *z* input one */
-        var neighbours = [
+        let neighbours = [
             this.north(z),
             this.north(this.east(z)),
             this.north(this.west(z)),
@@ -166,7 +166,7 @@ function Board(map, mineNumber) {
         /* Create the mines array */
 
         while (this.mines.length < this.mineNumber) {
-            var n = Math.ceil(Math.random() * (this.boardSize - 1));
+            let n = Math.ceil(Math.random() * (this.boardSize - 1));
 
             if (!this.hasMine(n)) {
                 this.mines.push(n);
@@ -181,7 +181,7 @@ function Board(map, mineNumber) {
 
     this.setValues = function () {
         /* Generates this.values[] which stores the number that says how many mines are around */
-        var coord, i, j;
+        let coord, i, j;
 
         for (i = 0; i <= this.mines.length; i++) {
             //Increment the value for all surrounding zones
@@ -196,10 +196,10 @@ function Board(map, mineNumber) {
 
     this.addZone = function () {
         /* Create a zone and add it to the board */
-        var mine = false;
-        var value = this.values[this.zones.length];
-        var x = (this.zoneSize + this.padding) * (this.zones.length % this.column) + this.padding;
-        var y = (this.zoneSize + this.padding) * Math.floor(this.zones.length / this.column) + this.padding;
+        let mine = false;
+        let value = this.values[this.zones.length];
+        let x = (this.zoneSize + this.padding) * (this.zones.length % this.column) + this.padding;
+        let y = (this.zoneSize + this.padding) * Math.floor(this.zones.length / this.column) + this.padding;
 
         //When using addZones, the length of the zones moves from 0 to this.boardSize
         if (this.hasMine(this.zones.length)) {
@@ -228,7 +228,7 @@ function Board(map, mineNumber) {
 
     this.update = function (x, y, evt, canvas) {
         /* Action to perform based on event received and the coordinates of the mouse */
-        var z = this.getZone(x, y);
+        let z = this.getZone(x, y);
 
         if (this.zones[z]) {
             switch (evt) {
@@ -242,7 +242,7 @@ function Board(map, mineNumber) {
                     //this.zones[z].hover();
                     break;
                 default:
-                    //console.log("Unusual behaviour: " + evt);
+                //console.log("Unusual behaviour: " + evt);
             }
             this.draw(canvas);
         }
@@ -250,7 +250,7 @@ function Board(map, mineNumber) {
 
     this.explode = function (zone, canvas) {
         /* Dispatch custom event "explode" */
-        var explode = new CustomEvent("explode", {
+        let explode = new CustomEvent("explode", {
             "detail": {
                 "x": zone.x,
                 "y": zone.y
@@ -260,7 +260,7 @@ function Board(map, mineNumber) {
     };
 
     this.alertStatus = function (canvas, type) {
-        var status = new CustomEvent(type);
+        let status = new CustomEvent(type);
         canvas.dispatchEvent(status);
     };
 
@@ -268,7 +268,7 @@ function Board(map, mineNumber) {
     this.gameOver = function (z, canvas) {
         /* Unveil all the mines of the board */
 
-        for (var i = 0; i < this.mines.length; i++) {
+        for (let i = 0; i < this.mines.length; i++) {
             this.zones[this.mines[i]].unveil();
         }
 
@@ -294,7 +294,7 @@ function Board(map, mineNumber) {
     };
 
     this.expand = function (z) {
-        var coord, j;
+        let coord, j;
 
         //Unveil the zone, if it fits the requirement, we continue with the possible neighbours
         if (this.unveil(z)) {
@@ -327,22 +327,22 @@ function Board(map, mineNumber) {
 
     this.draw = function (canvas) {
         /* Drawing the state of the board */
-        var ctx = canvas.getContext("2d");
+        let ctx = canvas.getContext("2d");
 
         //Clean up the board
         ctx.fillStyle = "#FFF";
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
         //The board will ask each zone to draw itself
-        for (var i = 0; i < this.zones.length; i++) {
+        for (let i = 0; i < this.zones.length; i++) {
             this.zones[i].draw(canvas);
         }
     };
 
     this.getZone = function (x, y) {
         /* Give the zone number of a given position (x, y) */
-        var column, row;
-        var zone = null;
+        let column, row;
+        let zone = null;
 
         if (x <= (this.zoneSize + this.padding) * this.column && y <= (this.zoneSize + this.padding) * this.column) {
             column = Math.floor(x / (this.zoneSize + this.padding));

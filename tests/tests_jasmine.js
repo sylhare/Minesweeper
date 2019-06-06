@@ -9,19 +9,19 @@ describe("MINESWEEPER'S TESTS", function() {
 describe("The Board", function() {
 
     it("is created from disclosed zones", function(){
-        var board = new Board(64);
+        let board = new Board(64);
 
-        for (var z = 0; z < board.zones.length; z++) {
+        for (let z = 0; z < board.zones.length; z++) {
             expect(board.zones[z].isUnveiled).toBeFalsy();
         }
 
     });
 
     it("has a defined number of mines", function(){
-        var board = new Board(64, 12);
-        var mine = 0;
+        let board = new Board(64, 12);
+        let mine = 0;
 
-        for (var z = 0; z < board.zones.length; z++) {
+        for (let z = 0; z < board.zones.length; z++) {
             if (board.zones[z].hasMine()){
                 mine++;
             }
@@ -32,8 +32,8 @@ describe("The Board", function() {
     });
 
     it("unveils the right zones on click", function() {
-        var board = new MockBoard();
-        var zoneUnveiled54Clicked = [
+        let board = new MockBoard();
+        let zoneUnveiled54Clicked = [
             2, 3, 4, 10, 11, 12, 16, 17, 18, 19,
             20, 21, 24, 25, 26, 27, 28, 29,
             32, 33, 34, 36, 37, 38, 39,
@@ -44,7 +44,7 @@ describe("The Board", function() {
 
         board.clicked(54);
 
-        for (var z=0; z < zoneUnveiled54Clicked.length; z++){
+        for (let z=0; z < zoneUnveiled54Clicked.length; z++){
             expect(board.zones[zoneUnveiled54Clicked[z]].isUnveiled).toBeTruthy();
         }
 
@@ -53,7 +53,7 @@ describe("The Board", function() {
     describe("A Zone of the Board", function() {
 
         it("can be created with a defined set of parameters", function() {
-            var zone = new Zone(1, 1, true, 20, 2);
+            let zone = new Zone(1, 1, true, 20, 2);
 
             expect(zone.x).toEqual(1);
             expect(zone.y).toEqual(1);
@@ -63,25 +63,25 @@ describe("The Board", function() {
         });
 
         it("has a standard color by default", function(){
-            var zone = new Zone();
+            let zone = new Zone();
 
             expect(zone.color).toEqual(colorDefault);
             expect(colorDefault !== colorUnveiled).toBeTruthy();
         });
 
         it("is not flagged or unveiled when created", function(){
-            var zone = new Zone();
+            let zone = new Zone();
 
             expect(zone.isUnveiled).toBeFalsy();
             expect(zone.flag).toBeFalsy();
         });
 
         it("can draw itself on the board", function() {
-            var canvas = document.createElement("canvas");
-            var blank = document.createElement("canvas");
+            let canvas = document.createElement("canvas");
+            let blank = document.createElement("canvas");
             document.body.appendChild(canvas);
 
-            var zone = new Zone(1, 1, true, 20, 2);
+            let zone = new Zone(1, 1, true, 20, 2);
             zone.draw(canvas);
 
             // Check that the canvas has something on it
@@ -94,32 +94,32 @@ describe("The Board", function() {
 
 describe("The explosion", function() {
     it("is created from particle objects", function() {
-        var e = new Explosion();
+        let e = new Explosion();
 
         expect(e.particles.length).toEqual(20);
 
     });
 
     describe("The explosion's particles", function() {
-        var e;
+        let e;
 
         beforeEach(function() {
             e = new Explosion(1, 1);
         });
 
         it("all start from the same defined x and y position", function () {
-            for (var p = 0; p < e.particles.length; p++) {
+            for (let p = 0; p < e.particles.length; p++) {
                 expect(e.particles[p].x).toEqual(1);
                 expect(e.particles[p].y).toEqual(1);
             }
         });
 
         it("all have random colors", function(){
-            var firstParticle = e.particles[0];
-            var anotherParticle = firstParticle;
+            let firstParticle = e.particles[0];
+            let anotherParticle = firstParticle;
 
-            for (var p = 1; p < e.particles.length; p++) {
-                var particle = e.particles[p];
+            for (let p = 1; p < e.particles.length; p++) {
+                let particle = e.particles[p];
                 expect(particle.color).toContain("#");
 
                 if (particle.color !== firstParticle.color){
@@ -134,7 +134,7 @@ describe("The explosion", function() {
 });
 
 describe("The timer", function() {
-    var timer;
+    let timer;
 
     beforeEach(function() {
         timer = new Timer();
