@@ -3,110 +3,114 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Sylhare">
-    <meta name="description" content="Basic Minesweeper game in Javascript">
-    <meta name="link" content="https://github.com/Sylhare/Minesweeper">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Sylhare" name="author">
+    <meta content="Basic Minesweeper game in Javascript" name="description">
+    <meta content="https://github.com/Sylhare/Minesweeper" name="link">
 
     <title> MineSweeper</title>
-    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+    <link href="css/stylesheet.css" rel="stylesheet" type="text/css">
+    <link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
 
-    <script defer type="text/javascript" src="js/Sketch.js"></script>
-    <script type="text/javascript" src="js/Zone.js"></script>
-    <script type="text/javascript" src="js/Board.js"></script>
-    <script type="text/javascript" src="js/Explosion.js"></script>
-    <script type="text/javascript" src="js/Timer.js"></script>
+    <script defer src="js/Sketch.js" type="text/javascript"></script>
+    <script src="js/Zone.js" type="text/javascript"></script>
+    <script src="js/Board.js" type="text/javascript"></script>
+    <script src="js/Explosion.js" type="text/javascript"></script>
+    <script src="js/Timer.js" type="text/javascript"></script>
 
 </head>
 
 <body>
 
-    <div id="page" class="flex-parent">
-        <h1 class="title">Minesweeper</h1>
+<div class="flex-parent" id="page">
+    <h1 class="title">Minesweeper</h1>
 
-        <!-- navigation panel -->
-        <div id="nav" class="flex-nav-container">
-            <div class="item-1">
-                <div id="game-info">
-                    <img id="mine-img" alt="mine" src="img/mine.svg">
-                    <!-- <span id="mines" class="info">8</span> -->
-                </div>
-                <div class="timer menu">
-                    <p>Time</p>
-                    <timer id="timer">00:00</timer>
-                </div>
+    <!-- navigation panel -->
+    <div class="flex-nav-container" id="nav">
+        <div class="item-1">
+            <div id="game-info">
+                <img alt="mine" id="mine-img" src="img/mine.svg">
+                <!-- <span id="mines" class="info">8</span> -->
             </div>
-
-            <div class="separator"></div>
-            <div>
-                <div class="menu" onclick="show('minesweeper-game');"><a class="button">Game</a></div>
-                <div class="menu" onclick="show('settings');"><a class="button">Settings</a></div>
-                <div class="menu" onclick="show('info');"><a class="button"> Info </a></div>
+            <div class="timer menu">
+                <p>Time</p>
+                <timer id="timer">00:00</timer>
             </div>
         </div>
 
-        <!-- Minesweeper game  -->
-        <div class="container flex-container">
-            <div id="settings" class="content" style="display: none;">
-                <h2>Settings</h2>
-                <p>
-                    You can configure the minesweeper here. Once you've changed the parameters go back to the
-                    <a onclick="show('minesweeper-game');">game</a> to test it!</p>
-
-                <h3> Mine Density </h3>
-                <p> Change the amount of mine (i.e. the density) in the board. </p>
-                <div class="slide-container">
-                    <p>Low</p>
-                    <input type="range" min="1" max="100" value="50" class="slider" id="density-setting">
-                    <p>High</p>
-                </div>
-
-                <h3> Board size </h3>
-                <p> You can change the board size, the number of zone within the board. </p>
-                <div class="slide-container">
-                    <p>Small</p>
-                    <input type="range" min="1" max="100" value="50" class="slider" id="size-setting">
-                    <p>Big</p>
-                </div>
-
-            </div>
-            <div id="info" class="content" style="display: none;">
-                <h2>Info</h2>
-
-                <p>This game is a minesweeper, you win be unveiling all case that does <b>not</b> contain a mine.</p>
-                <ul>
-                    <li>You lose if you click on a mine <img class="img-info" alt="mine" src="./img/mine.svg"></li>
-                    <li>You can flag <img class="img-info" alt="flag" src="./img/flag.svg"> zones of the board by right-clicking</li>
-                    <li>The number on the zone <img class="img-info" alt="zone" src="./img/zone.png"> indicates the number of mine(s) nearby</li>
-                </ul>
-                <br>
-                <p>The game test page is available <a href="./tests/tests.html">here</a>.</p>
-
-            </div>
-            <div id="minesweeper-game">
-
-                <!-- Custom Alert -->
-                <div id="alertContainer">
-                    <div id="alertBox" class="center">
-                        <!--<h1 id="customAlert-title" class="">Alert</h1>-->
-                        <img id="alert-img" src="" alt="alert" class="alertBox-img">
-                        <p id="customAlert-content">message</p>
-                        <a class="button" href="#" onclick="removeAlert()">Ok</a>
-                    </div>
-                </div>
-
-                <!-- Game canvas -->
-                <div id="game" class=""></div>
-
-            </div>
-        </div>
-        <div id="footer">
-            <p>
-                Webpage made by <a href="https://github.com/Sylhare" target="_blank">sylhare</a>
-            </p>
+        <div class="separator"></div>
+        <div>
+            <div class="menu" onclick="show('minesweeper-game');"><a class="button">Game</a></div>
+            <div class="menu" onclick="show('settings');"><a class="button">Settings</a></div>
+            <div class="menu" onclick="show('info');"><a class="button"> Info </a></div>
         </div>
     </div>
+
+    <!-- Minesweeper game  -->
+    <div class="container flex-container">
+        <div class="content" id="settings" style="display: none;">
+            <h2>Settings</h2>
+            <p>
+                You can configure the minesweeper here. Once you've changed the parameters go back to the
+                <a onclick="show('minesweeper-game');">game</a> to test it!</p>
+
+            <h3> Mine Density </h3>
+            <p> Change the amount of mine (i.e. the density) in the board. </p>
+            <div class="slide-container">
+                <p>Low</p>
+                <input class="slider" id="density-setting" max="100" min="1" type="range" value="50">
+                <p>High</p>
+            </div>
+
+            <h3> Board size </h3>
+            <p> You can change the board size, the number of zone within the board. </p>
+            <div class="slide-container">
+                <p>Small</p>
+                <input class="slider" id="size-setting" max="100" min="1" type="range" value="50">
+                <p>Big</p>
+            </div>
+
+        </div>
+        <div class="content" id="info" style="display: none;">
+            <h2>Info</h2>
+
+            <p>This game is a minesweeper, you win be unveiling all case that does <b>not</b> contain a mine.</p>
+            <ul>
+                <li>You lose if you click on a mine <img alt="mine" class="img-info" src="./img/mine.svg"></li>
+                <li>You can flag <img alt="flag" class="img-info" src="./img/flag.svg"> zones of the board by
+                    right-clicking
+                </li>
+                <li>The number on the zone <img alt="zone" class="img-info" src="./img/zone.png"> indicates the number
+                    of mine(s) nearby
+                </li>
+            </ul>
+            <br>
+            <p>The game test page is available <a href="./tests/tests.html">here</a>.</p>
+
+        </div>
+        <div id="minesweeper-game">
+
+            <!-- Custom Alert -->
+            <div id="alertContainer">
+                <div class="center" id="alertBox">
+                    <!--<h1 id="customAlert-title" class="">Alert</h1>-->
+                    <img alt="alert" class="alertBox-img" id="alert-img" src="">
+                    <p id="customAlert-content">message</p>
+                    <a class="button" href="#" onclick="removeAlert()">Ok</a>
+                </div>
+            </div>
+
+            <!-- Game canvas -->
+            <div class="" id="game"></div>
+
+        </div>
+    </div>
+    <div id="footer">
+        <p>
+            Webpage made by <a href="https://github.com/Sylhare" target="_blank">sylhare</a>
+        </p>
+    </div>
+</div>
 </body>
 
 </html>

@@ -1,156 +1,156 @@
 body {
-    font-family: "Roboto", sans-serif;
-    line-height: 1.2em;
-    font-size: 1em;
-    background: #eee;
-    margin: 0;
-    padding: 0;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.2em;
+  font-size: 1em;
+  background: #eee;
+  margin: 0;
+  padding: 0;
 }
 
 p {
-    line-height: 1em;
+  line-height: 1em;
 }
 
 a {
-    text-decoration: none;
-    color: orange;
+  text-decoration: none;
+  color: orange;
 }
 
 h1 {
-    font-size: 2.25em;
-    font-weight: normal;
-    line-height: 1.1em;
-    margin: 0 0 .5em 0;
+  font-size: 2.25em;
+  font-weight: normal;
+  line-height: 1.1em;
+  margin: 0 0 .5em 0;
 }
 
 h3 {
-    margin: 0;
-    padding-top: 1em;
+  margin: 0;
+  padding-top: 1em;
 }
 
 .img-info {
-    display: inline-block;
-    width: 1.15em;
-    margin-bottom: -3px;
+  display: inline-block;
+  width: 1.15em;
+  margin-bottom: -3px;
 }
 
 .center {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
 }
 
 /* -- flex -- */
 
 .flex-parent {
-    display: flex;
-    flex-direction: column;
-    min-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 95vh;
 }
 
 .flex-container {
-    flex: 1 1 auto;
-    justify-content: center;
+  flex: 1 1 auto;
+  justify-content: center;
 }
 
 
 .flex-nav-container {
-    display: flex;
-    align-items: center;
-    flex-flow: row wrap;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }
 
 .item-1 {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 @media screen and (max-width: 400px) {
-    .separator {
-        height: 0;
-        width: 100%;
-        flex-basis: 100%;
-        background-color: blue;
-        order: 2;
-    }
+  .separator {
+    height: 0;
+    width: 100%;
+    flex-basis: 100%;
+    background-color: blue;
+    order: 2;
+  }
 
-    .item-1 {
-        order: 3;
-        margin-top: 2.5em;
-    }
+  .item-1 {
+    order: 3;
+    margin-top: 2.5em;
+  }
 }
 
 
 /* --  page default -- */
 
 #page {
-    margin: 20px;
+  margin: 20px;
 }
 
 #nav {
-    width: 100%;
-    margin-bottom: 20px;
-    vertical-align: top;
+  width: 100%;
+  margin-bottom: 20px;
+  vertical-align: top;
 }
 
 
 .title {
-    width: 100%;
-    left: 0;
-    padding: 0;
-    margin-top: 5px;
-    margin-bottom: 30px;
-    color: grey;
+  width: 100%;
+  left: 0;
+  padding: 0;
+  margin-top: 5px;
+  margin-bottom: 30px;
+  color: grey;
 }
 
 .content {
-    margin: 20px 0 0 0;
-    background: white;
-    padding: 20px;
-    border-radius: 3px;
+  margin: 20px 0 0 0;
+  background: white;
+  padding: 20px;
+  border-radius: 3px;
 }
 
 .content,
 .button {
-    box-shadow: 0 1px 1px #999;
+  box-shadow: 0 1px 1px #999;
 }
 
 #nav .menu {
-    display: inline-block;
-    margin-bottom: 3px;
+  display: inline-block;
+  margin-bottom: 3px;
 }
 
 #nav .menu a {
-    padding: 20px;
-    background: orange;
-    margin-right: 2px;
+  padding: 20px;
+  background: orange;
+  margin-right: 2px;
 }
 
 #nav .menu a:hover {
-    background-color: #ffb424;
-    box-shadow: 0 1px 1px #666;
+  background-color: #ffb424;
+  box-shadow: 0 1px 1px #666;
 }
 
 #nav .menu a:active {
-    background-color: #ff8f00;
+  background-color: #ff8f00;
 }
 
 #footer {
-    text-align: right;
-    margin: 10px;
-    border-bottom: 1px #ccc solid;
+  text-align: right;
+  margin: 10px;
+  border-bottom: 1px #ccc solid;
 }
 
 
 #footer p {
-    text-align: right;
-    text-transform: uppercase;
-    font-size: 80%;
-    color: grey;
+  text-align: right;
+  text-transform: uppercase;
+  font-size: 80%;
+  color: grey;
 
 }
 
@@ -159,184 +159,184 @@ h3 {
 
 canvas,
 #board {
-    border: 3px solid grey;
-    display: inline-block;
-    margin-top: 1em;
+  border: 3px solid grey;
+  display: inline-block;
+  margin-top: 1em;
 }
 
 .container {
-    margin-bottom: 10px;
-    width: 100%;
+  margin-bottom: 10px;
+  width: 100%;
 }
 
 #game {
-    text-align: center;
+  text-align: center;
 }
 
 #mines.info {
-    color: gray;
-    font-size: 20px;
-    margin-right: 17px;
+  color: gray;
+  font-size: 20px;
+  margin-right: 17px;
 }
 
 #game-info {
-    height: 25px;
+  height: 25px;
 }
 
 #game-info:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 #mine-img {
-    vertical-align: bottom;
-    width: 25px;
+  vertical-align: bottom;
+  width: 25px;
 }
 
 
 /* -- timer -- */
 
 .timer {
-    color: gray;
-    opacity: 0.9;
+  color: gray;
+  opacity: 0.9;
 }
 
 .timer p {
-    color: #3d3b3c;
-    margin-top: 0;
-    margin-bottom: 2px;
-    font-weight: bold;
-    opacity: 1;
+  color: #3d3b3c;
+  margin-top: 0;
+  margin-bottom: 2px;
+  font-weight: bold;
+  opacity: 1;
 }
 
 .timer:hover {
-    color: #0099FF;
+  color: #0099FF;
 }
 
 /* -- Slider -- */
 
 .slide-container {
-    width: 80%;
-    display: inline-block;
-    margin-left: 20%;
+  width: 80%;
+  display: inline-block;
+  margin-left: 20%;
 }
 
 .slide-container p {
-    display: inline-block;
+  display: inline-block;
 }
 
 .slider {
-    -webkit-appearance: none;
-    width: 50%;
-    height: 10px;
-    border-radius: 5px;
-    background: lightgray;
-    box-shadow: inset -1px -1px 1px dimgray;
-    outline: none;
-    opacity: 0.9;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
+  -webkit-appearance: none;
+  width: 50%;
+  height: 10px;
+  border-radius: 5px;
+  background: lightgray;
+  box-shadow: inset -1px -1px 1px dimgray;
+  outline: none;
+  opacity: 0.9;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
 }
 
 .slider:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 23px;
-    height: 24px;
-    border: 0;
-    box-shadow: inset -1px -1px 0 lightgray;
-    background: orange;
-    cursor: pointer;
+  -webkit-appearance: none;
+  width: 23px;
+  height: 24px;
+  border: 0;
+  box-shadow: inset -1px -1px 0 lightgray;
+  background: orange;
+  cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-    width: 23px;
-    height: 24px;
-    border: 0;
-    background: orange;
-    box-shadow: inset -1px -1px 0 lightgray;
-    cursor: pointer;
+  width: 23px;
+  height: 24px;
+  border: 0;
+  background: orange;
+  box-shadow: inset -1px -1px 0 lightgray;
+  cursor: pointer;
 }
 
 input[type=range]::-moz-focus-outer {
-    border: 0;
+  border: 0;
 }
 
 /* -- Alert -- */
 
 #alertContainer {
-    visibility: hidden;
-    background-color: rgba(0, 0, 0, 0.3);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 10000;
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10000;
 }
 
 #alertBox {
-    width: 350px;
-    height: 250px;
-    background-color: #fff;
-    border-radius: 7px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  width: 350px;
+  height: 250px;
+  background-color: #fff;
+  border-radius: 7px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 }
 
 .alertBox-img {
-    width: 100px;
-    height: 100px;
-    border: 0;
-    margin-top: 15px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  width: 100px;
+  height: 100px;
+  border: 0;
+  margin-top: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #alertBox h1 {
-    text-align: left;
-    margin: 0;
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
-    height: 15%;
-    color: white;
-    padding: 2px 0 2px 5px;
+  text-align: left;
+  margin: 0;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  height: 15%;
+  color: white;
+  padding: 2px 0 2px 5px;
 }
 
 #alertBox p {
-    text-align: center;
-    font-weight: bold;
-    height: 30px;
-    margin-top: 20px;
-    margin-bottom: 30px;
+  text-align: center;
+  font-weight: bold;
+  height: 30px;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 #alertBox .button {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 3%;
-    width: 20%;
-    text-transform: uppercase;
-    background-color: #97DBDB;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3%;
+  width: 20%;
+  text-transform: uppercase;
+  background-color: #97DBDB;
 }
 
 #alertBox .button:hover {
-    background-color: #9be0e0;
+  background-color: #9be0e0;
 }
 
 a.button {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .button {
-    border-radius: 3px;
-    text-align: center;
-    color: white;
+  border-radius: 3px;
+  text-align: center;
+  color: white;
 }
 
 .button:hover {
-    box-shadow: 0 1px 1px #666;
+  box-shadow: 0 1px 1px #666;
 }
