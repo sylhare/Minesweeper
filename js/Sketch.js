@@ -1,14 +1,14 @@
 let board;
 const timer = new Timer();
 const WIN = {
-    name: "win",
-    //img: "../img/trophy.svg" // uncomment if on a local server 
-    text: ["Congratulation!", "br", "you beat the game!"]
+  name: "win",
+  //img: "../img/trophy.svg" // uncomment if on a local server
+  text: ["Congratulation!", "br", "you beat the game!"]
 };
 const LOSE = {
-    name: "lose",
-    //img: "../img/skull.svg", //if on a local server
-    text: ["BOOOM !!", "br", "you've exploded!"]
+  name: "lose",
+  //img: "../img/skull.svg", //if on a local server
+  text: ["BOOOM !!", "br", "you've exploded!"]
 };
 
 
@@ -21,89 +21,89 @@ const LOSE = {
 */
 
 function createCanvas(body, id, width, height) {
-    /* Create a canvas and but it in "body" can be any tagnamed element, id, width and height of teh canvas can be configured */
-    let canvas = document.createElement("canvas");
+  /* Create a canvas and but it in "body" can be any tagnamed element, id, width and height of teh canvas can be configured */
+  let canvas = document.createElement("canvas");
 
-    canvas.id = id || "board";
-    canvas.width = width || 258;
-    canvas.height = height || 258;
-    //canvas.oncontextmenu = "javascript:return false;";
+  canvas.id = id || "board";
+  canvas.width = width || 258;
+  canvas.height = height || 258;
+  //canvas.oncontextmenu = "javascript:return false;";
 
-    body.appendChild(canvas);
+  body.appendChild(canvas);
 
-    return document.getElementById(canvas.id);
+  return document.getElementById(canvas.id);
 }
 
 function updateTextNode(id, text) {
-    /* Update text node of the defined id with text */
-    let node = document.getElementById(id);
-    node.textContent = String(text) || "error"; //Firefox
-    node.innerText = String(text) || "error"; //IE
+  /* Update text node of the defined id with text */
+  let node = document.getElementById(id);
+  node.textContent = String(text) || "error"; //Firefox
+  node.innerText = String(text) || "error"; //IE
 }
 
 function addTextNode(parentId, text, id) {
-    /* Add a text node under a parentId with a defined id in the HTML */
-    let element = document.createElement("span");
-    let p = text || "error";
-    let node = document.createTextNode(p);
-    let parent = document.getElementById(parentId);
+  /* Add a text node under a parentId with a defined id in the HTML */
+  let element = document.createElement("span");
+  let p = text || "error";
+  let node = document.createTextNode(p);
+  let parent = document.getElementById(parentId);
 
-    element.appendChild(node);
-    element.id = id || "info";
-    element.classList.add("info");
+  element.appendChild(node);
+  element.id = id || "info";
+  element.classList.add("info");
 
-    parent.appendChild(element);
-    //parent.insertBefore(element, parent.childNodes[0]);
+  parent.appendChild(element);
+  //parent.insertBefore(element, parent.childNodes[0]);
 }
 
 function removeChildren(parent) {
-    /* Remove all children from the id node */
-    let p = document.getElementById(parent) || parent;
+  /* Remove all children from the id node */
+  let p = document.getElementById(parent) || parent;
 
-    while (p.firstChild) {
-        p.removeChild(p.firstChild);
-    }
+  while (p.firstChild) {
+    p.removeChild(p.firstChild);
+  }
 }
 
 function addAlert(type) {
-    /* Add a custom alert with a text as the message and type win or lose */
-    let text, content = document.getElementById("customAlert-content");
+  /* Add a custom alert with a text as the message and type win or lose */
+  let text, content = document.getElementById("customAlert-content");
 
-    timer.stop();
-    removeChildren(content);
+  timer.stop();
+  removeChildren(content);
 
-    for (let i = 0; i < type.text.length; i++) {
-        text = type.text[i];
-        if (text === "br") {
-            content.appendChild(document.createElement(text));
-        } else {
-            content.appendChild(document.createTextNode(text));
-        }
+  for (let i = 0; i < type.text.length; i++) {
+    text = type.text[i];
+    if (text === "br") {
+      content.appendChild(document.createElement(text));
+    } else {
+      content.appendChild(document.createTextNode(text));
     }
-    document.getElementById("alertContainer").style.visibility = "visible";
-    document.getElementById("alert-img").src = type.img;
+  }
+  document.getElementById("alertContainer").style.visibility = "visible";
+  document.getElementById("alert-img").src = type.img;
 }
 
 function removeAlert() {
-    /* Remove the custom alert */
+  /* Remove the custom alert */
 
-    document.getElementById("alertContainer").style.visibility = "hidden";
-    setup(document.getElementById("board")); // restart the game, /!\ "board" is default value  
+  document.getElementById("alertContainer").style.visibility = "hidden";
+  setup(document.getElementById("board")); // restart the game, /!\ "board" is default value
 }
 
 function show(elementID) {
-    let array = ["info", "settings", "minesweeper-game"];
-    let index = array.indexOf(elementID);
+  let array = ["info", "settings", "minesweeper-game"];
+  let index = array.indexOf(elementID);
 
-    if (index > -1) {
-        array.splice(index, 1);
-    }
+  if (index > -1) {
+    array.splice(index, 1);
+  }
 
-    console.log(elementID);
+  console.log(elementID);
 
-    document.getElementById(elementID).style.display = "block";
-    document.getElementById(array[0]).style.display = "none";
-    document.getElementById(array[1]).style.display = "none";
+  document.getElementById(elementID).style.display = "block";
+  document.getElementById(array[0]).style.display = "none";
+  document.getElementById(array[1]).style.display = "none";
 }
 
 
@@ -116,65 +116,65 @@ function show(elementID) {
 */
 
 function getMousePos(canvas, evt) {
-    /* Return the position of the mouse within the canvas */
-    let rect = canvas.getBoundingClientRect();
-    return {
-        x: Math.round(evt.clientX - rect.left),
-        y: Math.round(evt.clientY - rect.top)
-    };
+  /* Return the position of the mouse within the canvas */
+  let rect = canvas.getBoundingClientRect();
+  return {
+    x: Math.round(evt.clientX - rect.left),
+    y: Math.round(evt.clientY - rect.top)
+  };
 }
 
 function addListener(canvas, event) {
-    /* Creates the listener to catch events in the canvas */
+  /* Creates the listener to catch events in the canvas */
 
-    canvas.addEventListener(event, function (evt) {
-        let pos = getMousePos(canvas, evt);
-        evt.preventDefault(); // Prevent the default behaviour of the event (for right click)
-        board.update(pos.x, pos.y, evt.type, canvas);
-    });
+  canvas.addEventListener(event, function (evt) {
+    let pos = getMousePos(canvas, evt);
+    evt.preventDefault(); // Prevent the default behaviour of the event (for right click)
+    board.update(pos.x, pos.y, evt.type, canvas);
+  });
 }
 
 function addStartListener(canvas, event) {
-    /* the listener for the start of the game */
+  /* the listener for the start of the game */
 
-    let handler = function () {
-        timer.start();
-        setTimer("timer");
-    };
+  let handler = function () {
+    timer.start();
+    setTimer("timer");
+  };
 
-    canvas.addEventListener(event, handler, {once: true});
+  canvas.addEventListener(event, handler, {once: true});
 
 }
 
 function addExplodeListener(canvas) {
-    /* Creates the listener and handler for the explode event in the board */
+  /* Creates the listener and handler for the explode event in the board */
 
-    canvas.addEventListener("explode", function (evt) {
-        let explosion = new Explosion(evt.detail.x, evt.detail.y);
-        let exploding = setInterval(function () {
-            board.draw(canvas);
-            explosion.update(canvas);
-        }, 1000 / 15);
-        // So we don't have too many running
-        setTimeout(function () {
-            clearInterval(exploding);
-        }, 900);
-    }, false);
+  canvas.addEventListener("explode", function (evt) {
+    let explosion = new Explosion(evt.detail.x, evt.detail.y);
+    let exploding = setInterval(function () {
+      board.draw(canvas);
+      explosion.update(canvas);
+    }, 1000 / 15);
+    // So we don't have too many running
+    setTimeout(function () {
+      clearInterval(exploding);
+    }, 900);
+  }, false);
 }
 
 function addStatusListener(canvas) {
-    /* Adds listener for the game status (win or lose) */
+  /* Adds listener for the game status (win or lose) */
 
-    canvas.addEventListener(WIN.name, function () {
-        addAlert(WIN);
-    }, false);
+  canvas.addEventListener(WIN.name, function () {
+    addAlert(WIN);
+  }, false);
 
-    canvas.addEventListener(LOSE.name, function () {
-        setTimeout(function () {
-            addAlert(LOSE);
-        }, 500);
+  canvas.addEventListener(LOSE.name, function () {
+    setTimeout(function () {
+      addAlert(LOSE);
+    }, 500);
 
-    }, false);
+  }, false);
 
 }
 
@@ -189,41 +189,41 @@ function addStatusListener(canvas) {
 
 
 function setTimer(id) {
-    /* Set the timer and update the html with the specified id */
+  /* Set the timer and update the html with the specified id */
 
-    setInterval(function () {
-        updateTextNode(id, timer.counter);
-    }, 1000);
+  setInterval(function () {
+    updateTextNode(id, timer.counter);
+  }, 1000);
 }
 
 function setup(canvas) {
-    /* Setup the minesweeper game */
+  /* Setup the minesweeper game */
 
-    timer.reset();
+  timer.reset();
 
-    board = new Board(64);
-    //board = new Board(canvas);
-    board.draw(canvas);
+  board = new Board(64);
+  //board = new Board(canvas);
+  board.draw(canvas);
 
-    updateTextNode("mines", board.mineNumber);
-    addStartListener(canvas, "click");
+  updateTextNode("mines", board.mineNumber);
+  addStartListener(canvas, "click");
 }
 
 window.onload = function () {
-    /* Main of the program, defines what is being done when the page loads */
+  /* Main of the program, defines what is being done when the page loads */
 
-    let body = document.getElementById("game");
-    //let body = document.getElementsByTagName("body")[0];
-    let canvas = createCanvas(body); //Used also in Zone.js and Board.js to draw the game
+  let body = document.getElementById("game");
+  //let body = document.getElementsByTagName("body")[0];
+  let canvas = createCanvas(body); //Used also in Zone.js and Board.js to draw the game
 
-    addListener(canvas, "mousemove");
-    addListener(canvas, "click");
-    addListener(canvas, "contextmenu");
-    addExplodeListener(canvas);
-    addStatusListener(canvas);
-    addTextNode("game-info", 0, "mines");
-    setup(canvas);
-    //setTimer("timer");
+  addListener(canvas, "mousemove");
+  addListener(canvas, "click");
+  addListener(canvas, "contextmenu");
+  addExplodeListener(canvas);
+  addStatusListener(canvas);
+  addTextNode("game-info", 0, "mines");
+  setup(canvas);
+  //setTimer("timer");
 };
 
 
